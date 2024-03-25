@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Puzzle</title>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+<style>
+  .operator-btn {
+    margin: 5px;
+  }
+  body {
+    background-color: #3CE1F7; /* Added blue background color */
+  }
+</style>
+</head>
+<body>
+
+  <div class="row justify-content-center">
+    <div class="col-md-6 text-center puzzle-container">
+      <h2>Daily Puzzle</h2>
+      <p>(New puzzle every day at 8:00 A.M)</p>
+      <h4>Select one of the operators to get the correct answer</h4>
+      <div class="my-3">
+        <!-- Ja ir nepareizi, tad rāda vēlvienu reizi. Ja otra atbilde nepareiza 0 punkti -->
+        <h1>7 ? 7 = 14</h1>
+      </div>
+      <div class="my-4">
+        <button type="button" class="btn btn-secondary operator-btn">-</button>
+        <button type="button" class="btn btn-secondary operator-btn">+</button>
+        <button type="button" class="btn btn-secondary operator-btn">:</button>
+        <button type="button" class="btn btn-secondary operator-btn">*</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+

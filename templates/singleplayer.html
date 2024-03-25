@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Single player</title>
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: lightblue;
+    text-align: center;
+    padding: 20px;
+  }
+  .game-stats {
+    display: flex;
+    flex-direction: column; /* Display stats in a single column */
+    align-items: flex-start; /* Align stats to the left */
+    margin-bottom: 20px;
+  }
+  .game-stats div {
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px; /* Add margin between stats */
+  }
+  .math-puzzle {
+    font-size: 24px;
+    margin: 20px 0;
+  }
+  .operators {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  .sailboats {
+    margin: 20px 0;
+  }
+  .correct-status {
+    color: orange;
+    font-size: 28px;
+    font-weight: bold;
+    margin: 20px auto; /* Center horizontally */
+    border: 2px solid orange; /* Add border */
+    padding: 10px; /* Add padding for space */
+    border-radius: 10px; /* Add border radius */
+    display: inline-block; /* Display as inline-block to adjust width to content */
+  }
+  .operator-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 20px;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .operator-button:hover {
+    background-color: #0056b3;
+  }
+  .symbol-box {
+    border: 2px solid #000;
+    padding: 10px;
+    margin: 0 5px;
+    border-radius: 5px;
+    font-size: 24px;
+    background-color: #fff;
+    display: inline-block; /* Display as inline-block to stay in one line */
+  }
+</style>
+</head>
+<body>
+<div class="game-stats">
+  <div>Current  streak: {{currentStreak}}</div>
+  <div>Current  level:  {{currentLevel}}</div>
+  <div>Attempts count:  {{currentCount}}</div>
+</div>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="math-puzzle">
+        <div class="symbol-box">{{firstNumber}}</div>
+        <div class="symbol-box">{{signSymbol}}</div>
+        <div class="symbol-box">{{secondNumber}}</div>
+        <div class="symbol-box">{{equalitySymbol}}</div>
+        <div class="symbol-box">{{resultNumber}}</div>
+      </div>
+      <style>
+        #userInput {
+          display: block;
+          margin: 20px auto;
+          height: 1em; 
+          font-size: 1.5em; 
+          
+        }
+      </style>
+      <input type="text" id="userInput" placeholder="Enter your answer" class="form-control mt-10">
+</div>
+      <div class="operators">
+        <button class="operator-button">+</button>
+        <button class="operator-button">-</button>
+        <button class="operator-button">/</button>
+        <button class="operator-button">*</button>
+      </div>
+      <div class="sailboats">
+        <!-- Images of sailboats can be added here -->
+      </div>
+      <div class="correct-status">{{correctStatus}}</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
