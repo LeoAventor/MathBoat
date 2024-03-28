@@ -1,154 +1,68 @@
 from random import randint
 
-MATH_SIGNS = ["+", "-", "*", "/"]
 
+class PUZZLE_CONTROLLER:
+    # Constants
+    PUZZLE_DATA_KEYS = ["firstNumber", "signSymbol", "secondNumber", "equalitySymbol", "resultNumber"]
+    MATH_SIGNS = ["+", "-", "*", "/"]
+    EQUALITY_SIGNS = []
+    EASY_MODE = 20
+    MEDIUM_MODE = 30
+    HARD_MODE = 40
 
-def generate_new_math_puzzle(exercise=1, difficulty="easy"):
-    match exercise:
-        case 1:
-            return generate_new_level_one_math_puzzle(difficulty)
-        case 2:
-            return generate_new_level_two_math_puzzle(difficulty)
-        case 3:
-            return generate_new_level_three_math_puzzle(difficulty)
-        case 4:
-            return generate_new_level_four_math_puzzle(difficulty)
+    # Variables
+    puzzle_data = dict()
 
+    def __init__(self):
+        for i in self.PUZZLE_DATA_KEYS:
+            self.puzzle_data[i] = "init"
 
+    def generate_new_math_puzzle(self, exercise=1, difficulty="easy"):
+        self.generate_math_puzzle(difficulty)
 
-def generate_new_level_one_math_puzzle(difficulty):
-    match difficulty:
-        case "easy":
-            maximum_number = 20
-        case _:
-            maximum_number = 20
+        match exercise:
+            case 1:
+                self.puzzle_data["correctAnswer"], self.puzzle_data["resultNumber"] = \
+                    self.puzzle_data["resultNumber"], "?"
+            case 2:
+                self.puzzle_data["correctAnswer"], self.puzzle_data["secondNumber"] = \
+                    self.puzzle_data["secondNumber"], "?"
+            case 3:
+                self.puzzle_data["correctAnswer"], self.puzzle_data["signSymbol"] = \
+                    self.puzzle_data["signSymbol"], "?"
+            case 4:
+                self.puzzle_data["correctAnswer"], self.puzzle_data["equalitySymbol"] = \
+                    self.puzzle_data["equalitySymbol"], "?"
 
-    first_number = randint(1, maximum_number)
-    second_number = randint(1, maximum_number)
-    result_number = 0
+    def generate_math_puzzle(self, difficulty):
+        match difficulty:
+            case "easy":
+                mode = self.EASY_MODE
+            case _:
+                mode = self.EASY_MODE
 
-    math_sign = MATH_SIGNS[randint(0, 3)]
-    equality_sign = "="
+        first_number = randint(1, mode)
+        second_number = randint(1, mode)
+        result_number = 0
 
-    match math_sign:
-        case "+":
-            result_number = first_number + second_number
-        case "-":
-            result_number = first_number - second_number
-        case "*":
-            result_number = first_number * second_number
-        case "/":
-            while first_number % second_number != 0:
-                second_number = randint(1, 20)
+        math_sign = self.MATH_SIGNS[randint(0, 3)]
+        equality_sign = "="
 
-            result_number = first_number // second_number
+        match math_sign:
+            case "+":
+                result_number = first_number + second_number
+            case "-":
+                result_number = first_number - second_number
+            case "*":
+                result_number = first_number * second_number
+            case "/":
+                while first_number % second_number != 0:
+                    second_number = randint(1, 20)
 
-    return {"firstNumber": first_number, "signSymbol": math_sign, "secondNumber": second_number,
-            "equalitySymbol": equality_sign, "resultNumber": result_number}
+                result_number = first_number // second_number
 
-def generate_new_level_two_math_puzzle(difficulty):
-    match difficulty:
-        case "easy":
-            maximum_number = 20
-        case _: # Ko _: nozīmē?
-            maximum_number = 20
-
-    first_number = randint(1, maximum_number)
-    second_number = randint(1, maximum_number)
-    result_number = 0
-
-    math_sign = MATH_SIGNS[randint(0, 3)]
-    equality_sign = "="
-
-    match math_sign:
-        case "+":
-            result_number = first_number + second_number
-        case "-":
-            result_number = first_number - second_number
-        case "*":
-            result_number = first_number * second_number
-        case "/":
-            while first_number % second_number != 0:
-                second_number = randint(1, 20)
-
-            result_number = first_number // second_number
-
-    return {"firstNumber": first_number, "signSymbol": math_sign, "secondNumber": second_number,
-            "equalitySymbol": equality_sign, "resultNumber": result_number}
-
-def generate_new_level_three_math_puzzle(difficulty):
-    match difficulty:
-        case "easy":
-            maximum_number = 20
-        case _: # Ko _: nozīmē?
-            maximum_number = 20
-
-    first_number = randint(1, maximum_number)
-    second_number = randint(1, maximum_number)
-    result_number = 0
-
-    math_sign = MATH_SIGNS[randint(0, 3)]
-    equality_sign = "="
-
-    match math_sign:
-        case "+":
-            result_number = first_number + second_number
-        case "-":
-            result_number = first_number - second_number
-        case "*":
-            result_number = first_number * second_number
-        case "/":
-            while first_number % second_number != 0:
-                second_number = randint(1, 20)
-
-            result_number = first_number // second_number
-
-    return {"firstNumber": first_number, "signSymbol": math_sign, "secondNumber": second_number,
-            "equalitySymbol": equality_sign, "resultNumber": result_number}
-
-def generate_new_level_four_math_puzzle(difficulty):
-    match difficulty:
-        case "easy":
-            maximum_number = 20
-        case _:
-            maximum_number = 20
-
-    first_number = randint(1, maximum_number)
-    second_number = randint(1, maximum_number)
-    result_number = 0
-
-    math_sign = MATH_SIGNS[randint(0, 3)]
-    equality_sign = "="
-
-    match math_sign:
-        case "+":
-            result_number = first_number + second_number
-        case "-":
-            result_number = first_number - second_number
-        case "*":
-            result_number = first_number * second_number
-        case "/":
-            while first_number % second_number != 0:
-                second_number = randint(1, 20)
-
-            result_number = first_number // second_number
-
-    return {"firstNumber": first_number, "signSymbol": math_sign, "secondNumber": second_number,
-            "equalitySymbol": equality_sign, "resultNumber": result_number}
-
-
-    
-    #todo implementation
-
-"""
-exercise
-1 - 1 + 1 = ? [result number]
-2 - 1 + ? = 2 [second number]
-3 - 1 ? 1 = 2 [sign]
-4 - 1 + 1 ? 3 [equality sign]
-
-difficulty 
-easy   - 1  ->  20
-medium - 10 ->  ??
-hard   - 30 ->  ??
-"""
+        self.puzzle_data["firstNumber"] = str(first_number)
+        self.puzzle_data["signSymbol"] = math_sign
+        self.puzzle_data["secondNumber"] = str(second_number)
+        self.puzzle_data["equalitySymbol"] = equality_sign
+        self.puzzle_data["resultNumber"] = str(result_number)
