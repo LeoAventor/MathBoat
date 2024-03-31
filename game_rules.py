@@ -11,34 +11,18 @@ class LOGIC_CONTROLLER:
     def __init__(self):
         for i in self.SINGLE_PLAYER_KEYS:
             self.render_data[i] = "?"
-        
-        else:
-            if i =="currentStreak":
-                self.render_data[i] = 0
-            if i =="currentCount":
-                self.render_data[i] = 0
-             
 
     def check_result(self, user_input):
-        expected_result = self.puzzle.puzzle_data["resultNumber"]
-        user_input = int(user_input)
-
-        if user_input == expected_result:
-            self.render_data["correctStatus"] = "Correct"
-            self.render_data["currentStreak"] += 1
-            self.render_data["currentLevel"] += 1
-            self.render_data["currentCount"] = 1
-
-
-        else:
-            self.render_data["correctStatus"] = "Incorrect"
-            self.render_data["currentStreak"] = 0
-            self.render_data["currentCount"] += 1
-            
-
-
+        print(user_input)
+        print(self.render_data)
+        print(self.puzzle.puzzle_data)
 
     def set_initial_data(self):
-        self.puzzle.generate_new_math_puzzle(exercise=1)
+        self.get_new_puzzle(1,"easy")
+
+    def get_new_puzzle(self, exercise, difficulity):
+        self.puzzle.generate_new_math_puzzle(exercise=exercise, difficulty=difficulity)
         for i in self.puzzle.puzzle_data.keys():
             self.render_data[i] = self.puzzle.puzzle_data[i]
+            #
+            self.render_data.re = self.puzzle.puzzle_data.result_number
