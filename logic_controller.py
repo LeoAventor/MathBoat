@@ -1,4 +1,4 @@
-from math_puzzles import PUZZLE_CONTROLLER
+from puzzle_controler import PUZZLE_CONTROLLER
 
 
 class LOGIC_CONTROLLER:

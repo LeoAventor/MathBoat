@@ -2,7 +2,7 @@ from random import randint
 
 
 class PUZZLE_DATA:
-    first_number = 0
+    first_number = 0 
     sign_symbol = "+"
     second_number = 0
     equality_symbol = "="
@@ -20,3 +20,18 @@ class PUZZLE_DATA:
 
     def convert_to_str(self):
         self.first_number = str(self.first_number)
+
+class RENDER_DATA:
+    current_streak = 0
+    current_level = 1
+    current_count = 3  
+   
+    def generate_new_current_streak(self, to):
+        self.current_streak = randint(0, to)
+
+    def generate_new_current_level(self, to):
+        self.current_level = randint(1, to)
+
+    def generate_new_current_count(self):
+        self.current_count = randint(3,0)
+

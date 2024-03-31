@@ -46,7 +46,7 @@ class PUZZLE_CONTROLLER:
             case "-":
                 self.subtraction()
             case "*":
-                result_number = first_number * second_number
+                self.multiplication()
             case "/":
                 self.division(mode)
 
@@ -57,12 +57,15 @@ class PUZZLE_CONTROLLER:
 
     def subtraction(self):
         self.puzzle_data.result_number = self.puzzle_data.first_number - self.puzzle_data.second_number
-
-    #multiplicatio
+    
+    def multiplication(self):
+        self.puzzle_data.result_number = self.puzzle_data.first_number * self.puzzle_data.second_number
 
     def division(self, mode):
         self.generate_division_data(mode)
         self.puzzle_data.result_number = self.puzzle_data.first_number // self.puzzle_data.second_number
+
+
 
     def generate_division_data(self, mode):
         while self.puzzle_data.first_number % self.puzzle_data.second_number != 0:
