@@ -1,28 +1,20 @@
 from puzzle_controler import PUZZLE_CONTROLLER
+from render_data import RENDER_DATA
 
 
 class LOGIC_CONTROLLER:
-    SINGLE_PLAYER_KEYS = ["currentStreak", "currentLevel", "currentCount", "firstNumber", "signSymbol", "secondNumber",
-                          "equalitySymbol", "resultNumber", "correctStatus"]
-
     puzzle = PUZZLE_CONTROLLER()
-    render_data = dict()
+    render_data = RENDER_DATA()
 
     def __init__(self):
-        for i in self.SINGLE_PLAYER_KEYS:
-            self.render_data[i] = "?"
+        self.get_new_puzzle(1, "easy")
 
     def check_result(self, user_input):
-        print(user_input)
-        print(self.render_data)
-        print(self.puzzle.puzzle_data)
-
-    def set_initial_data(self):
-        self.get_new_puzzle(1,"easy")
+        self.render_data.current_status = "correct" if (self.render_data.correct_answer
+                                                        == str(user_input)) else "incorrect"
+        # TODO Generate new puzzle
+        # TODO Change Score
 
     def get_new_puzzle(self, exercise, difficulity):
         self.puzzle.generate_new_math_puzzle(exercise=exercise, difficulty=difficulity)
-        for i in self.puzzle.puzzle_data.keys():
-            self.render_data[i] = self.puzzle.puzzle_data[i]
-            #
-            self.render_data.re = self.puzzle.puzzle_data.result_number
+        self.render_data.map_puzzle_data_to_render_data(self.puzzle.puzzle_data)

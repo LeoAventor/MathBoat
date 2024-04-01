@@ -7,9 +7,6 @@ class WEB_CONTROLLER:
 
     logic = LOGIC_CONTROLLER()
 
-    is_initial = False
-    render_data = set()
-
     def __init__(self):
         self.app.add_url_rule("/", "home", self.home)
         self.app.add_url_rule("/profile", "profile", self.profile)
@@ -33,26 +30,21 @@ class WEB_CONTROLLER:
         # todo generate_new_math_puzzle()
         # todo check_result()
 
-        if not self.is_initial:
-            self.is_initial = True
-            self.logic.set_initial_data()
-            self.render_data = self.logic.render_data
-
         if request.method == 'POST':
-            self.logic.check_result(user_input=request.form["userInput"])
+            if request.form['userInput'] != '':
+                self.logic.check_result(user_input=request.form["userInput"])
 
         # todo check_result()
-
         return render_template('single_player.html',
-                               currentStreak=self.render_data["currentStreak"],
-                               currentLevel=self.render_data["currentLevel"],
-                               currentCount=self.render_data["currentCount"],
-                               firstNumber=self.render_data["firstNumber"],
-                               signSymbol=self.render_data["signSymbol"],
-                               secondNumber=self.render_data["secondNumber"],
-                               equalitySymbol=self.render_data["equalitySymbol"],
-                               resultNumber=self.render_data["resultNumber"],
-                               correctStatus=self.render_data["correctStatus"])
+                               currentStreak=self.logic.render_data.current_streak,
+                               currentLevel=self.logic.render_data.current_level,
+                               currentCount=self.logic.render_data.current_count,
+                               firstNumber=self.logic.render_data.first_number,
+                               signSymbol=self.logic.render_data.sign_symbol,
+                               secondNumber=self.logic.render_data.second_number,
+                               equalitySymbol=self.logic.render_data.equality_symbol,
+                               resultNumber=self.logic.render_data.result_number,
+                               correctStatus=self.logic.render_data.current_status)
 
     @app.route("/practice_mode")
     def practice_mode(self):
