@@ -42,4 +42,4 @@ class LOGIC_CONTROLLER:
         for i in self.puzzle.puzzle_data.keys():
             self.render_data[i] = self.puzzle.puzzle_data[i]
             #
-            self.render_data.re = self.puzzle.puzzle_data.result_number
+            self.render_data.re = self.puzzle.puzzle_data.result_number #PIEMERS
