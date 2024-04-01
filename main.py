@@ -1,5 +1,5 @@
 from flask import Flask, render_template, redirect, url_for, request
-from game_rules import LOGIC_CONTROLLER
+from logic_controller import LOGIC_CONTROLLER
 
 
 class WEB_CONTROLLER:
