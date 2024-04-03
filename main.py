@@ -1,13 +1,16 @@
 from flask import Flask, render_template, redirect, url_for, request
-from logic_controller import LOGIC_CONTROLLER
+from game_controller import GAME_CONTROLLER
 
 
-class WEB_CONTROLLER:
+class APPLICATION_CONTROLLER:
     app = Flask(__name__)
-
-    logic = LOGIC_CONTROLLER()
+    game_controller = object()
 
     def __init__(self):
+        # VARIABLES
+        self.game_controller = GAME_CONTROLLER()
+
+        # ENDPOINTS
         self.app.add_url_rule("/", "home", self.home)
         self.app.add_url_rule("/profile", "profile", self.profile)
         self.app.add_url_rule("/single_player", "single_player", self.single_player, methods=['POST', 'GET'])
@@ -32,19 +35,19 @@ class WEB_CONTROLLER:
 
         if request.method == 'POST':
             if request.form['userInput'] != '':
-                self.logic.check_result(user_input=request.form["userInput"])
+                self.game_controller.check_result(user_input=request.form["userInput"])
 
         # todo check_result()
         return render_template('single_player.html',
-                               currentStreak=self.logic.render_data.current_streak,
-                               currentLevel=self.logic.render_data.current_level,
-                               currentCount=self.logic.render_data.current_count,
-                               firstNumber=self.logic.render_data.first_number,
-                               signSymbol=self.logic.render_data.sign_symbol,
-                               secondNumber=self.logic.render_data.second_number,
-                               equalitySymbol=self.logic.render_data.equality_symbol,
-                               resultNumber=self.logic.render_data.result_number,
-                               correctStatus=self.logic.render_data.current_status)
+                               currentStreak=self.game_controller.game_data.current_streak,
+                               currentLevel=self.game_controller.game_data.current_difficulty,
+                               currentCount=self.game_controller.game_data.current_count,
+                               firstNumber=self.game_controller.game_data.first_number,
+                               signSymbol=self.game_controller.game_data.operation_symbol,
+                               secondNumber=self.game_controller.game_data.second_number,
+                               equalitySymbol=self.game_controller.game_data.equality_symbol,
+                               resultNumber=self.game_controller.game_data.result_number,
+                               correctStatus=self.game_controller.game_data.current_status)
 
     @app.route("/practice_mode")
     def practice_mode(self):
@@ -52,5 +55,5 @@ class WEB_CONTROLLER:
 
 
 if __name__ == "__main__":
-    application = WEB_CONTROLLER()
+    application = APPLICATION_CONTROLLER()
     application.app.run()
