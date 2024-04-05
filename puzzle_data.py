@@ -2,21 +2,52 @@ from random import randint
 
 
 class PUZZLE_DATA:
-    first_number = 0 
-    sign_symbol = "+"
-    second_number = 0
-    equality_symbol = "="
-    result_number = 0
-    correct_answer = 0
+    # Puzzle data
+    first_number = int()
+    operation_symbol = str()
+    second_number = int()
+    equality_symbol = str()
+    result_number = int()
+    correct_answer = int()
 
-    def generate_new_first_number(self, to):
-        self.first_number = randint(0, to)
+    # Local logic variables
+    max_value = int()
+    difficulty = str()
 
-    def generate_new_second_number(self, to):
-        self.second_number = randint(1, to)
+    def __init__(self):
+        self.equality_symbol = "="
+        self.update_max_value()
 
-    def generate_new_math_sign(self):
-        self.sign_symbol = ["+", "-", "*", "/"][randint(0, 3)]
+    def generate_new_first_number(self):
+        self.first_number = randint(2, self.max_value)
+
+    def generate_new_second_number(self):
+        self.second_number = randint(2, self.max_value)
+
+    def generate_new_fake_result(self, number):
+        self.result_number = randint(number // 2, number * 2) + 1
+
+    def update_max_value(self):
+        match self.difficulty:
+            case "easy":
+                self.max_value = 50
+            case "medium":
+                self.max_value = 100
+            case "hard":
+                self.max_value = 10
+            case "insane":
+                self.max_value = 15
+
+    def generate_new_operation_symbol(self):
+        match self.difficulty:
+            case "easy":
+                self.operation_symbol = ["+", "-"][randint(0, 1)]
+            case "medium":
+                self.operation_symbol = ["+", "-"][randint(0, 1)]
+            case "hard":
+                self.operation_symbol = ["*", "/"][randint(0, 1)]
+            case "insane":
+                self.operation_symbol = ["+", "-", "*", "/"][randint(0, 3)]
 
     def convert_to_str(self):
         self.first_number = str(self.first_number)
