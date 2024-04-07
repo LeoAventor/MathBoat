@@ -1,4 +1,4 @@
-from puzzle_controler import PUZZLE_CONTROLLER
+from puzzle_controller import PUZZLE_CONTROLLER
 from game_data import GAME_DATA
 
 
@@ -14,6 +14,17 @@ class GAME_CONTROLLER:
         self.puzzle_controller.puzzle_data.update_max_value()
         self.get_new_puzzle()
 
+    def reset_game(self):
+
+        if self.game_data.current_count == 0:
+            self.game_data.current_status = "Game Over"
+            self.game_data.current_difficulty = "easy"
+            self.game_data.current_count = "reset"
+            self.game_data.current_streak = str(0)
+            self.get_new_puzzle() 
+        
+
+
     def check_result(self, user_input):
         user_input = str(user_input)
         if user_input != "":
@@ -27,13 +38,18 @@ class GAME_CONTROLLER:
                     self.puzzle_controller.puzzle_data.update_max_value()
                     self.game_data.current_streak = str(0)
 
-                    # TODO if win ?
+                
+                if self.game_data.current_streak == str(20):
+                    self.game_data.current_status = "Winner"
+                    self.reset_game()
             else:
                 self.game_data.current_status = "incorrect"
                 self.game_data.current_streak = str(0)
                 self.game_data.dec_current_count()
 
-                # TODO if current_count == 0 -> reset_game()
+                if self.game_data.current_count == 0:
+                    self.reset_game()
+
 
         self.get_new_puzzle()
 
