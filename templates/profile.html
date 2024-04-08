@@ -50,20 +50,24 @@
 
 <body>
   <div class="container">
-    <!-- Profile Box -->
-    <div class="profile-box text-center">
-      <h2>Profile</h2>
-      <!-- Profile Content Here -->
-    </div>
-    <div class="col-md-6 d-flex justify-content-start">
-      <div class="user-stats-container">
-        <h2>User Stats</h2>
-        <ul>
-          <li><strong>Best Streak:</strong> {{bestStreak}}</li>
-          <li><strong>Maximum Level:</strong> {{maximumLevel}}</li>
-        </ul>
+
+    <div class="row">
+      <div class="profile-box text-center">
+        <h2>Profile</h2>
       </div>
-      <div class="col-md-6 d-flex justify-content-end">
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="user-stats-container">
+          <h2>User Stats</h2>
+          <ul>
+            <li><strong>Best Streak:</strong> {{bestStreak}}</li>
+            <li><strong>Maximum Level:</strong> {{maximumLevel}}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col d-flex justify-content-end">
         <div class="additional-info-container">
           <h2>Additional Info</h2>
           <ul>
@@ -74,11 +78,14 @@
       </div>
     </div>
 
-    <div class="row button-container d-flex justify-content-end">
-      <div class="col-md-12 text-center">
-        <a class="btn btn-outline-custom btn-lg w-100" href={{url_for('home')}}>Home</a>
+    <div class="row">
+      <div class="row button-container d-flex justify-content-center">
+        <div class="col-md-12 text-center">
+          <a class="btn btn-outline-custom btn-lg w-100" href={{url_for('home')}}>Home</a>
+        </div>
       </div>
     </div>
+
   </div>
 
   <!-- Bootstrap JS (optional) -->
