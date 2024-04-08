@@ -124,7 +124,7 @@
       <form action="" method="post">
         <input type="text" id="userInput" name="userInput" placeholder="Enter your answer" class="form-control mt-10">
         <input class="submit-button" type="submit" name="Submit" formaction="{{url_for('single_player')}}">
-        <input class="quit-button" type="button" value="Quit" formaction="{{url_for('home')}}">
+        <a class="btn submit-button" href={{url_for('home')}}>Home</a>
       </form>
       <div class="sailboats">
         <!-- Images of sailboats can be added here -->
