@@ -21,7 +21,7 @@ class APPLICATION_CONTROLLER:
         # ENDPOINTS
         self.app.add_url_rule("/", "index", self.index)
         self.app.add_url_rule("/home", "home", self.home)
-        self.app.add_url_rule("/login", "login", self.login)
+        self.app.add_url_rule("/login", "login", self.login, methods =['POST', 'GET'])
         self.app.add_url_rule("/sign_up", "sign_up", self.sign_up, methods=['POST', 'GET'])
         self.app.add_url_rule("/profile", "profile", self.profile)
         self.app.add_url_rule("/single_player", "single_player", self.single_player, methods=['POST', 'GET'])
@@ -36,9 +36,17 @@ class APPLICATION_CONTROLLER:
         else:
             return redirect(url_for('login'))
 
-    @staticmethod
-    def login():
-        return render_template('login.html')
+    
+    def login(self):
+
+        if request.method == 'POST':
+            self.user_controller.create_user(request.form['username'], request.form['password'])
+
+        self.render_controller.update(self.user_controller.user_data)    
+        return render_template('login.html',
+                               username=self.render_controller.render_data.username,
+                               password=self.render_controller.render_data.password,
+                               confirmation_status=self.render_controller.render_data.confirmation_status)
 
     def sign_up(self):
 

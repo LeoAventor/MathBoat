@@ -27,13 +27,12 @@
             <div class="card">
                 <div class="card-body">
                     <h2 class="card-title text-center mb-4">Login</h2>
-                    <p id ="status">Welcome</p>
-                    <form onsubmit="return validateForm()">
+                    <form onsubmit="{{url_for('login')}}" method="post">
                         <div class="mb-3">
-                            <input class="form-control" placeholder="Username" required type="text">
+                            <input name="username" id="username" class="form-control" placeholder="{{username}}" required type="text">
                         </div>
                         <div class="mb-3">
-                            <input id="password" input class="form-control" placeholder="Password" required type="password">
+                            <input name="password" id="password" class="form-control" placeholder="{{password}}" required type="password">
                         </div>
                         <button class="btn btn-custom w-100" type="submit">Login</button>
                     </form>
