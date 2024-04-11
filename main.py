@@ -10,7 +10,6 @@ class APPLICATION_CONTROLLER:
     game_controller = object()
     user_controller = object()
     render_controller = object()
-    is_authorized = False
 
     def __init__(self):
         # VARIABLES
@@ -21,44 +20,49 @@ class APPLICATION_CONTROLLER:
         # ENDPOINTS
         self.app.add_url_rule("/", "index", self.index)
         self.app.add_url_rule("/home", "home", self.home)
-        self.app.add_url_rule("/login", "login", self.login, methods =['POST', 'GET'])
+        self.app.add_url_rule("/login", "login", self.login, methods=['POST', 'GET'])
         self.app.add_url_rule("/sign_up", "sign_up", self.sign_up, methods=['POST', 'GET'])
         self.app.add_url_rule("/profile", "profile", self.profile)
-        self.app.add_url_rule("/single_player", "single_player", self.single_player, methods=['POST', 'GET'])
+        self.app.add_url_rule("/single_player", "single_player",
+                              self.single_player, methods=['POST', 'GET'])
 
     @staticmethod
     def index():
         return render_template("index.html")
 
     def home(self):
-        if self.is_authorized:
+        if self.user_controller.is_authorized:
             return render_template('home.html')
         else:
             return redirect(url_for('login'))
 
-    
     def login(self):
 
         if request.method == 'POST':
-            self.user_controller.create_user(request.form['username'], request.form['password'])
+            self.user_controller.set_input_data(request.form['username'], request.form['password'])
+            self.user_controller.sign_in()
+            return redirect(url_for('home'))
 
         self.render_controller.update(self.user_controller.user_data)    
         return render_template('login.html',
                                username=self.render_controller.render_data.username,
                                password=self.render_controller.render_data.password,
-                               confirmation_status=self.render_controller.render_data.confirmation_status)
+                               sign_in_confirmation_status=
+                               self.render_controller.render_data.sign_in_confirmation_status)
 
     def sign_up(self):
 
         if request.method == 'POST':
-            self.user_controller.create_user(request.form['username'], request.form['password'],
-                                             request.form['confirm_password'])
+            self.user_controller.set_input_data(request.form['username'], request.form['password'],
+                                                request.form['confirm_password'])
+            self.user_controller.sign_up()
 
         self.render_controller.update(self.user_controller.user_data)
         return render_template('sign_up.html',
                                username=self.render_controller.render_data.username,
                                password=self.render_controller.render_data.password,
-                               confirmation_status=self.render_controller.render_data.confirmation_status)
+                               sign_up_confirmation_status=
+                               self.render_controller.render_data.sign_up_confirmation_status)
 
     @staticmethod
     def profile():

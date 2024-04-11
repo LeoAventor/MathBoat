@@ -10,8 +10,9 @@ class RENDER_DATA:
     result_number = str()
     correct_answer = str()
     current_status = str()
-    # Sign Up Data
+    # User Data
     username = str()
     password = str()
-    confirmation_status = str()
+    sign_up_confirmation_status = str()
+    sign_in_confirmation_status = str()
 

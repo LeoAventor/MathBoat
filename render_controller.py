@@ -24,5 +24,6 @@ class RENDER_CONTROLLER:
         elif isinstance(input_class, USER_DATA):
             self.render_data.username = input_class.username
             self.render_data.password = input_class.password
-            self.render_data.confirmation_status = input_class.confirmation_status
+            self.render_data.sign_up_confirmation_status = input_class.sign_up_confirmation_status
+            self.render_data.sign_in_confirmation_status = input_class.sign_in_confirmation_status
 

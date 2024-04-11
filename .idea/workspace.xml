@@ -8,14 +8,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a734bd8-0c67-4786-aa64-1aeb6083749a" name="Changes" comment="Changes">
-      <change afterPath="$PROJECT_DIR$/render_controller.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/render_data.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database_controller.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database_data.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/render_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/render_controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/render_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/render_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/sign_up.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/sign_up.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/single_player.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/single_player.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/user_controller.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/user_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users.txt" beforeDir="false" afterPath="$PROJECT_DIR$/users.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,7 +165,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712580886079</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Changes">
+      <option name="closed" value="true" />
+      <created>1712768163495</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1712768163495</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
