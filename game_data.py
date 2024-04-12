@@ -1,8 +1,11 @@
 class GAME_DATA:
-    # single player page data
+    # single_player page data
+    # profile       page data
     current_streak = str()
     current_difficulty = str()
-    current_count = str()
+    current_attempts = str()
+
+    # single player page data
     first_number = str()
     operation_symbol = str()
     second_number = str()
@@ -11,11 +14,17 @@ class GAME_DATA:
     correct_answer = str()
     current_status = str()
 
+    # profile page data
+    current_win_count = str()
+    current_lose_count = str()
+
     def __init__(self):
-        self.current_streak = "0"
-        self.current_difficulty = "insane"
-        self.current_count = str(3)
+        self.current_streak = str(0)
+        self.current_difficulty = "easy"
+        self.current_attempts = str(3)
         self.current_status = "Welcome"
+        self.current_lose_count = str(0)
+        self.current_win_count = str(0)
 
     def map_puzzle_data_to_render_data(self, puzzle_data):
         # Mappings | Puzzle data -> Render data
@@ -39,4 +48,10 @@ class GAME_DATA:
                 self.current_difficulty = "insane"
 
     def dec_current_count(self):
-        self.current_count = str(int(self.current_count) - 1)
+        self.current_attempts = str(int(self.current_attempts) - 1)
+
+    def inc_win_count(self):
+        self.current_win_count = str(int(self.current_win_count) + 1)
+
+    def inc_lose_count(self):
+        self.current_lose_count = str(int(self.current_lose_count) + 1)

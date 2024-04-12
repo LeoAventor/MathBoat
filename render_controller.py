@@ -13,7 +13,7 @@ class RENDER_CONTROLLER:
         if isinstance(input_class, GAME_DATA):
             self.render_data.current_streak = input_class.current_streak
             self.render_data.current_difficulty = input_class.current_difficulty
-            self.render_data.current_count = input_class.current_count
+            self.render_data.current_attempts = input_class.current_attempts
             self.render_data.first_number = input_class.first_number
             self.render_data.operation_symbol = input_class.operation_symbol
             self.render_data.second_number = input_class.second_number
@@ -24,5 +24,11 @@ class RENDER_CONTROLLER:
         elif isinstance(input_class, USER_DATA):
             self.render_data.username = input_class.username
             self.render_data.password = input_class.password
-            self.render_data.confirmation_status = input_class.confirmation_status
+            self.render_data.user_win_count = input_class.user_win_count
+            self.render_data.user_lose_count = input_class.user_lose_count
+            self.render_data.user_current_attempts = input_class.user_current_attempts
+            self.render_data.user_current_streak = input_class.user_current_streak
+            self.render_data.user_current_difficulty = input_class.user_current_difficulty
+            self.render_data.sign_up_confirmation_status = input_class.sign_up_confirmation_status
+            self.render_data.sign_in_confirmation_status = input_class.sign_in_confirmation_status
 
