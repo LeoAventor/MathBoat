@@ -64,9 +64,14 @@ class APPLICATION_CONTROLLER:
                                sign_up_confirmation_status=
                                self.render_controller.render_data.sign_up_confirmation_status)
 
-    @staticmethod
-    def profile():
-        return render_template('profile.html', bestStreak=10)
+    def profile(self):
+        self.render_controller.update(self.user_controller.user_data)
+        return render_template('profile.html',
+                               user_win_count=self.render_controller.render_data.user_win_count,
+                               user_lose_count=self.render_controller.render_data.user_lose_count,
+                               user_current_difficulty=self.render_controller.render_data.user_current_difficulty,
+                               user_current_streak=self.render_controller.render_data.user_current_streak,
+                               user_current_attempts=self.render_controller.render_data.user_current_attempts)
 
     # @app.route("/multiplayer")
     # def multiplayer(self):
@@ -79,12 +84,13 @@ class APPLICATION_CONTROLLER:
         if request.method == 'POST':
             if request.form['userInput'] != '':
                 self.game_controller.check_result(user_input=request.form["userInput"])
+                self.game_controller.save_game_date(self.user_controller.user_data)
 
         self.render_controller.update(self.game_controller.game_data)
         return render_template('single_player.html',
                                currentStreak=self.render_controller.render_data.current_streak,
                                currentLevel=self.render_controller.render_data.current_difficulty,
-                               currentCount=self.render_controller.render_data.current_count,
+                               currentCount=self.render_controller.render_data.current_attempts,
                                firstNumber=self.render_controller.render_data.first_number,
                                signSymbol=self.render_controller.render_data.operation_symbol,
                                secondNumber=self.render_controller.render_data.second_number,

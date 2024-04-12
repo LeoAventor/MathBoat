@@ -9,7 +9,18 @@
   <component name="ChangeListManager">
     <list default="true" id="0a734bd8-0c67-4786-aa64-1aeb6083749a" name="Changes" comment="Changes">
       <change afterPath="$PROJECT_DIR$/config.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user_encoder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/database_controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/database_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/game_controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/game_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/render_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/render_controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/render_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/render_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/user_controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/user_data.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

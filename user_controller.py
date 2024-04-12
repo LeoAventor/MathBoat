@@ -18,9 +18,8 @@ class USER_CONTROLLER:
         self.user_data = USER_DATA()
         self.database_controller = DATABASE_CONTROLLER()
 
-        self.is_authorized = False
-        self.database_controller.load_users()
-        self.users_list = self.database_controller.users_list
+        self.is_authorized = True
+        self.users_list = self.database_controller.load_users()
 
     def sign_in(self):
         if self.input_username in self.users_list.keys():

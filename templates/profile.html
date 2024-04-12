@@ -60,19 +60,20 @@
     <div class="row">
       <div class="col">
         <div class="user-stats-container">
-          <h2>User Stats</h2>
+          <h2>Records</h2>
           <ul>
-            <li><strong>Best Streak:</strong> {{bestStreak}}</li>
-            <li><strong>Maximum Level:</strong> {{maximumLevel}}</li>
+            <li><strong>Win count:</strong> {{user_win_count}}</li>
+            <li><strong>Lose count:</strong> {{user_lose_count}}</li>
           </ul>
         </div>
       </div>
       <div class="col d-flex justify-content-end">
         <div class="additional-info-container">
-          <h2>Additional Info</h2>
+          <h2>Current state</h2>
           <ul>
-            <li><strong>Username:</strong>{{Username}}</li>
-            <li><strong>Current Attempts:</strong>{{currentAttempts}}</li>
+            <li><strong>Current difficulty:</strong> {{user_current_difficulty}}</li>
+            <li><strong>Current streak:</strong> {{user_current_streak}}</li>
+            <li><strong>Current attempts:</strong> {{user_current_attempts}}</li>
           </ul>
         </div>
       </div>
