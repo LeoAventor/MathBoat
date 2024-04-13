@@ -143,25 +143,25 @@
 
 <body>
   <div class="game-stats">
-    <div>Current streak: {{currentStreak}}</div>
-    <div>Current level: {{currentLevel}}</div>
-    <div>Attempts count: {{currentCount}}</div>
+    <div>Current streak: {{current_streak}}</div>
+    <div>Current difficulty: {{current_difficulty}}</div>
+    <div> Current attempts: {{current_attempts}}</div>
   </div>
   <div class="centered-container">
     <div class="row justify-content-center">
       <div class="col-md-8">
         <div class="math-puzzle">
-          <div class="symbol-box">{{firstNumber}}</div>
-          <div class="symbol-box">{{signSymbol}}</div>
-          <div class="symbol-box">{{secondNumber}}</div>
-          <div class="symbol-box">{{equalitySymbol}}</div>
-          <div class="symbol-box">{{resultNumber}}</div>
+          <div class="symbol-box">{{first_number}}</div>
+          <div class="symbol-box">{{operation_symbol}}</div>
+          <div class="symbol-box">{{second_number}}</div>
+          <div class="symbol-box">{{equality_symbol}}</div>
+          <div class="symbol-box">{{result_number}}</div>
         </div>
         <hr>
         <form action="" method="post" class="form-inline">
           <input type="text" id="userInput" name="userInput" placeholder="Enter your answer" class="form-control">
           <input class="submit-button" type="submit" name="Submit" formaction="{{url_for('single_player')}}">
-          <div class="correct-status">{{correctStatus}}</div>
+          <div class="correct-status">{{current_status}}</div>
         </form>
         <hr>
         <div class="sailboats">

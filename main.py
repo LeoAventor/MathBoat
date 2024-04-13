@@ -88,15 +88,15 @@ class APPLICATION_CONTROLLER:
 
         self.render_controller.update(self.game_controller.game_data)
         return render_template('single_player.html',
-                               currentStreak=self.render_controller.render_data.current_streak,
-                               currentLevel=self.render_controller.render_data.current_difficulty,
-                               currentCount=self.render_controller.render_data.current_attempts,
-                               firstNumber=self.render_controller.render_data.first_number,
-                               signSymbol=self.render_controller.render_data.operation_symbol,
-                               secondNumber=self.render_controller.render_data.second_number,
-                               equalitySymbol=self.render_controller.render_data.equality_symbol,
-                               resultNumber=self.render_controller.render_data.result_number,
-                               correctStatus=self.render_controller.render_data.current_status)
+                               current_streak=self.render_controller.render_data.current_streak,
+                               current_difficulty=self.render_controller.render_data.current_difficulty,
+                               current_attempts=self.render_controller.render_data.current_attempts,
+                               first_number=self.render_controller.render_data.first_number,
+                               operation_symbol=self.render_controller.render_data.operation_symbol,
+                               second_number=self.render_controller.render_data.second_number,
+                               equality_symbol=self.render_controller.render_data.equality_symbol,
+                               result_number=self.render_controller.render_data.result_number,
+                               current_status=self.render_controller.render_data.current_status)
 
     # @app.route("/practice_mode")
     # def practice_mode(self):
