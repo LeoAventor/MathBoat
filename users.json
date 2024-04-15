@@ -1,12 +1,12 @@
 {
     "users": [
         {
-            "username": "Username",
-            "password": "Password",
-            "user_win_count": "0",
-            "user_lose_count": "0",
+            "username": "arturs",
+            "password": "12345678",
+            "user_win_count": "1",
+            "user_lose_count": "3",
             "user_current_attempts": "3",
-            "user_current_streak": "9",
+            "user_current_streak": "0",
             "user_current_difficulty": "easy"
         }
     ]

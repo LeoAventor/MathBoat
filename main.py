@@ -25,22 +25,24 @@ class APPLICATION_CONTROLLER:
         self.app.add_url_rule("/profile", "profile", self.profile)
         self.app.add_url_rule("/single_player", "single_player",
                               self.single_player, methods=['POST', 'GET'])
+        self.app.add_url_rule("/practice", "practice", self.practice, methods=['POST', 'GET'])
 
     @staticmethod
     def index():
         return render_template("index.html")
 
     def home(self):
+        print(self.user_controller.is_authorized)
         if self.user_controller.is_authorized:
             return render_template('home.html')
         else:
             return redirect(url_for('login'))
 
     def login(self):
-
         if request.method == 'POST':
             self.user_controller.set_input_data(request.form['username'], request.form['password'])
             self.user_controller.sign_in()
+            self.user_controller.sync_game_data(self.game_controller.game_data)
             return redirect(url_for('home'))
 
         self.render_controller.update(self.user_controller.user_data)    
@@ -51,7 +53,6 @@ class APPLICATION_CONTROLLER:
                                self.render_controller.render_data.sign_in_confirmation_status)
 
     def sign_up(self):
-
         if request.method == 'POST':
             self.user_controller.set_input_data(request.form['username'], request.form['password'],
                                                 request.form['confirm_password'])
@@ -78,18 +79,15 @@ class APPLICATION_CONTROLLER:
     #     return "Todo multiplayer"
 
     def single_player(self):
-        # todo get_current_info()
-        # todo update_current_info()
-
         if request.method == 'POST':
             if request.form['userInput'] != '':
-                self.game_controller.check_result(user_input=request.form["userInput"])
-                self.game_controller.save_game_date(self.user_controller.user_data)
+                self.game_controller.check_result_for_single_player(user_input=request.form["userInput"])
+                self.game_controller.sync_game_data(self.user_controller.user_data)
 
         self.render_controller.update(self.game_controller.game_data)
         return render_template('single_player.html',
                                current_streak=self.render_controller.render_data.current_streak,
-                               current_difficulty=self.render_controller.render_data.current_difficulty,
+                               current_difficulty=self.render_controller.render_data.current_single_player_difficulty,
                                current_attempts=self.render_controller.render_data.current_attempts,
                                first_number=self.render_controller.render_data.first_number,
                                operation_symbol=self.render_controller.render_data.operation_symbol,
@@ -98,9 +96,23 @@ class APPLICATION_CONTROLLER:
                                result_number=self.render_controller.render_data.result_number,
                                current_status=self.render_controller.render_data.current_status)
 
-    # @app.route("/practice_mode")
-    # def practice_mode(self):
-    #     return render_template('practice_mode.html')
+    def practice(self):
+        if request.method == 'POST':
+            if request.form['userInput'] != '':
+                self.game_controller.check_result_for_practice(user_input=request.form["userInput"])
+                #self.game_controller.sync_game_data(self.user_controller.user_data)
+
+        self.render_controller.update(self.game_controller.game_data)
+        return render_template('practice.html',
+                               correct_answer_count=self.render_controller.render_data.correct_answer_count,
+                               incorrect_answer_count=self.render_controller.render_data.incorrect_answer_count,
+                               previous_correct_answer=self.render_controller.render_data.previous_correct_answer,
+                               first_number=self.render_controller.render_data.first_number,
+                               operation_symbol=self.render_controller.render_data.operation_symbol,
+                               second_number=self.render_controller.render_data.second_number,
+                               equality_symbol=self.render_controller.render_data.equality_symbol,
+                               result_number=self.render_controller.render_data.result_number,
+                               current_status=self.render_controller.render_data.current_status)
 
 
 if __name__ == "__main__":

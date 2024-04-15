@@ -1,7 +1,7 @@
 class RENDER_DATA:
     # Game Data
     current_streak = str()
-    current_difficulty = str()
+    current_single_player_difficulty = str()
     current_attempts = str()
     first_number = str()
     operation_symbol = str()
@@ -10,6 +10,9 @@ class RENDER_DATA:
     result_number = str()
     correct_answer = str()
     current_status = str()
+    correct_answer_count = str()
+    incorrect_answer_count = str()
+    previous_correct_answer = str()
     # User Data
     username = str()
     password = str()

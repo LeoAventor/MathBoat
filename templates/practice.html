@@ -4,11 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Single player</title>
+  <title>Practice</title>
   <!-- Bootstrap CSS -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    .single-player-body {
+    .practice-body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: aqua;
       text-align: center;
@@ -141,11 +141,11 @@
   </style>
 </head>
 
-<body class="single-player-body">
+<body class="practice-body">
   <div class="game-stats">
-    <div>Current streak: {{current_streak}}</div>
-    <div>Current difficulty: {{current_difficulty}}</div>
-    <div>Current attempts: {{current_attempts}}</div>
+    <div>Correct answer count: {{correct_answer_count}}</div>
+    <div>Incorrect answer count: {{incorrect_answer_count}}</div>
+    <div>Previous correct answer: {{previous_correct_answer}}</div>
   </div>
   <div class="centered-container">
     <div class="row justify-content-center">
@@ -158,7 +158,7 @@
           <div class="symbol-box">{{result_number}}</div>
         </div>
         <hr>
-        <form onsubmit="{{url_for('single_player')}}" method="post" class="form-inline">
+        <form onsubmit="{{url_for('practice')}}" method="post" class="form-inline">
           <input type="text" id="userInput" name="userInput" placeholder="Enter your answer" class="form-control">
           <button class="submit-button" type="submit">Submit</button>
           <div class="correct-status">{{current_status}}</div>

@@ -11,19 +11,28 @@ class DATABASE_CONTROLLER:
     def __init__(self):
         self.database_data = DATABASE_DATA()
 
-    def load_users(self):
-        tmp_users_list = dict()
-        with open(self.database_data.filename2, 'r') as file:
-            lines = file.readlines()
-            for line in lines:
-                tmp_data = line.split(',')
-                tmp_users_list[tmp_data[0]] = tmp_data[1].replace("\n", "")
+    def load_usernames_from_file(self):
+        if os.path.exists(self.database_data.filename):
+            with open(self.database_data.filename, 'r') as input_file:
+                json_dict = json.load(input_file)
+                input_file.close()
 
-        return tmp_users_list
+                tmp_user_list = dict()
+                for user in json_dict['users']:
+                    tmp_user_list[user['username']] = user['password']
 
-    def save_user(self, user):
-        with open(self.database_data.filename2, 'a') as file:
-            file.write(user.get_user_as_single_string())
+                return tmp_user_list
+        else:
+            return dict()
+
+    def load_user_form_file(self, username):
+        with open(self.database_data.filename, 'r') as input_file:
+            json_dict = json.load(input_file)
+            input_file.close()
+
+        for user in json_dict['users']:
+            if user['username'] == username:
+                return user
 
     def save_to_file(self, user):
         template = dict()
@@ -33,12 +42,19 @@ class DATABASE_CONTROLLER:
                     json_dict = json.load(input_file)
                     input_file.close()
 
-                for user_data in json_dict['users']:
-                    if user_data['username'] == user.username:
-                        user_data['user_current_streak'] = user.user_current_streak
+                if user.username in self.load_usernames_from_file().keys():
+                    for user_data in json_dict['users']:
+                        if user_data['username'] == user.username:
+                            user_data['user_current_streak'] = user.user_current_streak
+                            user_data['user_current_difficulty'] = user.user_current_difficulty
+                            user_data['user_current_attempts'] = user.user_current_attempts
+                            user_data['user_win_count'] = user.user_win_count
+                            user_data['user_lose_count'] = user.user_lose_count
+                else:
+                    json_dict['users'].append(user)
 
                 with open(self.database_data.filename, 'w') as output_file:
-                    json_string = json.dumps(json_dict, indent=4)
+                    json_string = json.dumps(json_dict, cls=USER_ENCODER, indent=4)
                     output_file.write(json_string)
                     output_file.close()
             else:
@@ -47,6 +63,4 @@ class DATABASE_CONTROLLER:
                 with open(self.database_data.filename, 'w') as output_file:
                     output_file.write(json_string)
                     output_file.close()
-
-
 
