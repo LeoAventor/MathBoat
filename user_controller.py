@@ -1,4 +1,5 @@
 from user_data import USER_DATA
+from game_data import GAME_DATA
 from database_controller import DATABASE_CONTROLLER
 
 
@@ -18,24 +19,26 @@ class USER_CONTROLLER:
         self.user_data = USER_DATA()
         self.database_controller = DATABASE_CONTROLLER()
 
-        self.is_authorized = True
-        self.users_list = self.database_controller.load_users()
+        self.is_authorized = False
 
     def sign_in(self):
+        self.users_list = self.database_controller.load_usernames_from_file()
         if self.input_username in self.users_list.keys():
             if self.input_password == self.users_list[self.input_username]:
                 self.is_authorized = True
+                self.load_user()
             else:
                 self.user_data.sign_in_confirmation_status = "Wrong password!"
         else:
             self.user_data.sign_up_confirmation_status = "Username does not exist!"
 
     def sign_up(self):
+        self.users_list = self.database_controller.load_usernames_from_file()
         if self.input_password == self.input_confirm_password:
             if self.input_username not in self.users_list.keys():
                 if self.user_data.check_password(self.input_password):
                     self.update_current_user()
-                    self.database_controller.save_user(self.user_data)
+                    self.database_controller.save_to_file(self.user_data)
                     self.user_data.sign_up_confirmation_status = "User created successfully"
                 else:
                     self.user_data.sign_up_confirmation_status = "Password must contain at least 8 digit's"
@@ -52,3 +55,21 @@ class USER_CONTROLLER:
         self.input_username = input_username
         self.input_password = input_password
         self.input_confirm_password = input_confirm_password
+
+    def load_user(self):
+        tmp_user = self.database_controller.load_user_form_file(self.input_username)
+        self.user_data.username = tmp_user['username']
+        self.user_data.password = tmp_user['password']
+        self.user_data.user_lose_count = tmp_user['user_lose_count']
+        self.user_data.user_win_count = tmp_user['user_win_count']
+        self.user_data.user_current_streak = tmp_user['user_current_streak']
+        self.user_data.user_current_attempts = tmp_user['user_current_attempts']
+        self.user_data.user_current_difficulty = tmp_user['user_current_difficulty']
+
+    def sync_game_data(self, game):
+        if isinstance(game, GAME_DATA):
+            game.current_attempts = self.user_data.user_current_attempts
+            game.current_streak = self.user_data.user_current_streak
+            game.current_single_player_difficulty = self.user_data.user_current_difficulty
+            game.current_win_count = self.user_data.user_win_count
+            game.current_lose_count = self.user_data.user_lose_count

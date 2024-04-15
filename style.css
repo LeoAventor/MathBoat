@@ -1,4 +1,20 @@
 .btn-custom {
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
-  }
- 
+}
+.practice-body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: aqua;
+  text-align: center;
+  padding: 20px;
+  margin: 0;
+  color: #333;
+}
+
+.single-player-body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: aqua;
+  text-align: center;
+  padding: 20px;
+  margin: 0;
+  color: #333;
+}

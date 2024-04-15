@@ -10,4 +10,4 @@ class DATABASE_DATA:
                 tmp_data = line.split('=')
                 match tmp_data[0]:
                     case 'users_data_file_name':
-                        self.filename = tmp_data[1]
+                        self.filename = tmp_data[1].replace("\n", '')
