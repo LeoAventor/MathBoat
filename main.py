@@ -102,7 +102,7 @@ class APPLICATION_CONTROLLER:
                 self.game_controller.check_result_for_practice(user_input=request.form["userInput"])
                 #self.game_controller.sync_game_data(self.user_controller.user_data)
 
-        self.render_controller.update(self.game_controller.game_data)
+        self.render_controller.update(self.game_controller.game_data, "practice")
         return render_template('practice.html',
                                correct_answer_count=self.render_controller.render_data.correct_answer_count,
                                incorrect_answer_count=self.render_controller.render_data.incorrect_answer_count,

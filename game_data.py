@@ -9,20 +9,20 @@ class GAME_DATA:
     current_status = str()  # Single player, Practice
 
     # Single player fields
-    first_number = str()
-    operation_symbol = str()
-    second_number = str()
-    equality_symbol = str()
-    result_number = str()
-    correct_answer = str()
+    sp_first_number = str()
+    sp_operation_symbol = str()
+    sp_second_number = str()
+    sp_equality_symbol = str()
+    sp_result_number = str()
+    sp_correct_answer = str()
 
-    # Single player fields
-    # first_number = str()
-    # operation_symbol = str()
-    # second_number = str()
-    # equality_symbol = str()
-    # result_number = str()
-    # correct_answer = str()
+    # Practice fields
+    p_first_number = str()
+    p_operation_symbol = str()
+    p_second_number = str()
+    p_equality_symbol = str()
+    p_result_number = str()
+    p_correct_answer = str()
 
     # Profile fields
     current_win_count = str()
@@ -48,14 +48,23 @@ class GAME_DATA:
         # Common fields
         self.current_status = "Welcome"
 
-    def map_puzzle_data_to_render_data(self, puzzle_data):
-        # Mappings | Puzzle data -> Render data
-        self.first_number = puzzle_data.first_number
-        self.operation_symbol = puzzle_data.operation_symbol
-        self.second_number = puzzle_data.second_number
-        self.equality_symbol = puzzle_data.equality_symbol
-        self.result_number = puzzle_data.result_number
-        self.correct_answer = puzzle_data.correct_answer
+    def sync_puzzle_data_to_game_data_for_single_player(self, puzzle_data):
+        # Mapping | Puzzle data -> Game data | Single player
+        self.sp_first_number = puzzle_data.first_number
+        self.sp_operation_symbol = puzzle_data.operation_symbol
+        self.sp_second_number = puzzle_data.second_number
+        self.sp_equality_symbol = puzzle_data.equality_symbol
+        self.sp_result_number = puzzle_data.result_number
+        self.sp_correct_answer = puzzle_data.correct_answer
+
+    def sync_puzzle_data_to_game_data_for_practice(self, puzzle_data):
+        # Mapping | Puzzle data -> Game data | Practice
+        self.p_first_number = puzzle_data.first_number
+        self.p_operation_symbol = puzzle_data.operation_symbol
+        self.p_second_number = puzzle_data.second_number
+        self.p_equality_symbol = puzzle_data.equality_symbol
+        self.p_result_number = puzzle_data.result_number
+        self.p_correct_answer = puzzle_data.correct_answer
 
     def inc_current_streak(self):
         self.current_streak = str(int(self.current_streak) + 1)
