@@ -50,6 +50,11 @@ class USER_CONTROLLER:
     def update_current_user(self):
         self.user_data.username = self.input_username
         self.user_data.password = self.input_password
+        self.user_data.user_current_streak = str(0)
+        self.user_data.user_lose_count = str(0)
+        self.user_data.user_win_count = str(0)
+        self.user_data.user_current_attempts = str(3)
+        self.user_data.user_current_difficulty = 'easy'
 
     def set_input_data(self, input_username, input_password, input_confirm_password=""):
         self.input_username = input_username
