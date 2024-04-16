@@ -8,6 +8,15 @@
             "user_current_attempts": "3",
             "user_current_streak": "0",
             "user_current_difficulty": "easy"
+        },
+        {
+            "username": "Leo",
+            "password": "123456789",
+            "user_win_count": "",
+            "user_lose_count": "",
+            "user_current_attempts": "",
+            "user_current_streak": "",
+            "user_current_difficulty": ""
         }
     ]
 }
