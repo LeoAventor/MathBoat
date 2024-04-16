@@ -16,14 +16,16 @@ class GAME_CONTROLLER:
         self.database_controller = DATABASE_CONTROLLER()
         self.game_data = GAME_DATA()
 
-        self.puzzle_controller.puzzle_data.difficulty = 'easy'
-        self.puzzle_controller.puzzle_data.update_max_value()
-        self.get_new_puzzle()
+        self.sync_difficulty_for_single_player()
+        self.get_new_puzzle_for_single_player()
+
+        self.sync_difficulty_for_practice()
+        self.get_new_puzzle_for_practice()
 
     def check_result_for_single_player(self, user_input):
         user_input = str(user_input)
         if user_input != "":
-            if self.game_data.correct_answer == user_input:
+            if self.game_data.sp_correct_answer == user_input:
                 self.game_data.current_status = "correct"
                 self.game_data.inc_current_streak()
 
@@ -47,12 +49,13 @@ class GAME_CONTROLLER:
                     self.game_data.inc_lose_count()
                     self.reset_game()
 
-        self.get_new_puzzle()
+        self.sync_difficulty_for_single_player()
+        self.get_new_puzzle_for_single_player()
 
     def check_result_for_practice(self, user_input):
         user_input = str(user_input)
         if user_input != "":
-            if self.game_data.correct_answer == user_input:
+            if self.game_data.p_correct_answer == user_input:
                 self.game_data.current_status = "correct"
                 self.game_data.inc_correct_answer_count()
                 self.game_data.get_motivation_previous_correct_answer()
@@ -60,10 +63,10 @@ class GAME_CONTROLLER:
             else:
                 self.game_data.current_status = "incorrect"
                 self.game_data.inc_incorrect_answer_count()
-                self.game_data.previous_correct_answer = self.game_data.correct_answer
+                self.game_data.previous_correct_answer = self.game_data.p_correct_answer
                 # TODO Save to profile data
         self.sync_difficulty_for_practice()
-        self.get_new_puzzle()
+        self.get_new_puzzle_for_practice()
 
     def sync_difficulty_for_single_player(self):
         self.puzzle_controller.puzzle_data.difficulty = self.game_data.current_single_player_difficulty
@@ -78,11 +81,15 @@ class GAME_CONTROLLER:
         self.sync_difficulty_for_single_player()
         self.game_data.current_attempts = str(3)
         self.game_data.current_streak = str(0)
-        self.get_new_puzzle()
+        self.get_new_puzzle_for_single_player()
 
-    def get_new_puzzle(self):
+    def get_new_puzzle_for_single_player(self):
         self.puzzle_controller.generate_new_math_puzzle()
-        self.game_data.map_puzzle_data_to_render_data(self.puzzle_controller.puzzle_data)
+        self.game_data.sync_puzzle_data_to_game_data_for_single_player(self.puzzle_controller.puzzle_data)
+
+    def get_new_puzzle_for_practice(self):
+        self.puzzle_controller.generate_new_math_puzzle()
+        self.game_data.sync_puzzle_data_to_game_data_for_practice(self.puzzle_controller.puzzle_data)
 
     def sync_game_data(self, user):
         if isinstance(user, USER_DATA):

@@ -1,7 +1,9 @@
 from database_data import DATABASE_DATA
 from user_data import USER_DATA
 from user_encoder import USER_ENCODER
+import pymongo
 import json
+import bson
 import os
 
 
@@ -10,6 +12,13 @@ class DATABASE_CONTROLLER:
 
     def __init__(self):
         self.database_data = DATABASE_DATA()
+
+    # def load_users_from_database(self):
+    #     client = pymongo.MongoClient(self.database_data.connection_string)
+    #     db = client.get_database('Mafia')
+    #     collection = db.get_collection('Test')
+    #     result = collection.find_one()
+    #     print(result)
 
     def load_usernames_from_file(self):
         if os.path.exists(self.database_data.filename):
