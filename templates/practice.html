@@ -8,102 +8,7 @@
   <!-- Bootstrap CSS -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    .practice-body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: aqua;
-      text-align: center;
-      padding: 20px;
-      margin: 0;
-      color: #333;
-    }
-
-    .game-stats {
-      display: flex;
-      justify-content: space-around;
-      flex-direction: row;
-      /* Display stats in a single column */
-      align-items: flex-start;
-      /* Align stats to the left */
-      margin-bottom: 20px;
-    }
-
-    .game-stats div {
-      background: white;
-      padding: 15px;
-      border-radius: 5px;
-      margin-bottom: 10px;
-      /* Add margin between stats */
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      flex: 1;
-      margin: 0 10px;
-    }
-
-    .math-puzzle {
-      font-size: 24px;
-      margin: 20px 0;
-      background: white;
-      padding: 20px;
-      border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .sailboats {
-      margin: 20px 0;
-    }
-
-    .correct-status {
-      color: orange;
-      font-size: 28px;
-      font-weight: bold;
-      margin: 20px auto;
-      /* Center horizontally */
-      margin-left: 10px;
-      border: 3px solid orange;
-      /* Add border */
-      padding: 5px 10px;
-      /* Add padding for space */
-      border-radius: 5px;
-      /* Add border radius */
-      display: inline-block;
-      /* Display as inline-block to adjust width to content */
-      width: auto;
-    }
-
-    .submit-button,
-    .quit-button {
-      display: block;
-      padding: 10px 20px;
-      font-size: 20px;
-      border-radius: 5px;
-      background-color: orange;
-      color: #fff;
-      margin: 20px auto;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-
-    .submit-button:hover,
-    .quit-button:hover {
-      background-color: orange;
-    }
-
-
-    .symbol-box {
-      border: 2px solid #fff;
-      padding: 10px;
-      margin: 0 5px;
-      border-radius: 5px;
-      font-size: 24px;
-      background-color: #fff;
-      display: inline-flex;
-      /* Display as inline-block to stay in one line */
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      width: 80px;
-      height: 60px;
-      justify-content: center;
-      align-items: center;
-    }
+   
 
     #userInput {
       display: block;
@@ -117,32 +22,11 @@
       margin-right: 10px;
 
     }
-
-    .centered-container {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-
-    .form-inline {
-      display: flex;
-      align-items: center;
-
-    }
-
-    .hr {
-      border: none;
-      height: 2px;
-      background-color: black;
-      margin: 20px 0;
-    }
   </style>
 </head>
 
 <body class="practice-body">
-  <div class="game-stats">
+  <div class="practice-game-stats">
     <div>Correct answer count: {{correct_answer_count}}</div>
     <div>Incorrect answer count: {{incorrect_answer_count}}</div>
     <div>Previous correct answer: {{previous_correct_answer}}</div>
@@ -150,21 +34,21 @@
   <div class="centered-container">
     <div class="row justify-content-center">
       <div class="col-md-8">
-        <div class="math-puzzle">
+        <div class="practice-math-puzzle">
           <div class="symbol-box">{{first_number}}</div>
           <div class="symbol-box">{{operation_symbol}}</div>
           <div class="symbol-box">{{second_number}}</div>
           <div class="symbol-box">{{equality_symbol}}</div>
           <div class="symbol-box">{{result_number}}</div>
         </div>
-        <hr>
+        <hr class="practice-single-player">
         <form onsubmit="{{url_for('practice')}}" method="post" class="form-inline">
           <input type="text" id="userInput" name="userInput" placeholder="Enter your answer" class="form-control">
           <button class="submit-button" type="submit">Submit</button>
           <div class="correct-status">{{current_status}}</div>
         </form>
-        <hr>
-        <div class="sailboats">
+        <hr class="practice-single-player">
+        <div class="practice-sailboats">
           <!-- Images of sailboats can be added here -->
           <a class="btn submit-button" href={{url_for('home')}}>Home</a>
         </div>
