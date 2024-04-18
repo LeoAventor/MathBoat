@@ -1,24 +1,9 @@
+/* Settings for all buttons */
 .btn-custom {
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
-}
+    background-color: #FFA500!important;
+    border-color: #FFA500!important;
 
-/* Practice */
-.practice-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  text-align: center;
-  padding: 20px;
-  margin: 0;
-  color: #333;
-}
-
-/* Single player */
-
-.single-player-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  text-align: center;
-  padding: 20px;
-  margin: 0;
-  color: #333;
 }
 
 
@@ -28,11 +13,11 @@
 }
 .daily-player-body, .practice-body, .single-player-body {
 
-  background-color: #3CE1F7  
+  background-color: #3CE1F7!important;  
 }
 
-.home-body,.login-body{
-  background-color: aqua; 
+.home-body,.login-body,.profile-body,.signup-body {
+  background-color: #3CE1F7!important; 
 }
 
 /*Home*/
@@ -56,21 +41,18 @@
 
 /*Index*/
 
-/*Login*/
-.btn-custom-login {
-  background-color: #FFA500;
-  border-color: #FFA500;
-}
-.btn-custom-login:hover {
-  background-color: #e69500;
-  border-color: #e69500;
-}
 
-/*Practice Mode*/
+/*Settings for all buttons*/
 
-.practice-body {
+
+
+
+
+
+/*Practice Mode; Single Player */
+
+.practice-body,.single-player-body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
   text-align: center;
   padding: 20px;
   margin: 0;
@@ -186,4 +168,49 @@
   height: 2px;
   background-color: black;
   margin: 20px 0;
+}
+
+#userInput {
+  display: block;
+  margin: 20px auto;
+  height: 40px;
+  font-size: 1.5em;
+  width: 50%;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 0 10px;
+  margin-right: 10px;
+
+}
+
+/* Profile */
+.profile-container{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.profile-box{
+  background-color: #ffffff;
+  /* white */
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+.user-stats-container {
+  margin-bottom: 10px;
+}
+.additional-info-container {
+  margin-bottom: 10px;
+}
+
+/* Quests level */
+
+
+
+
+/* Quests task */
+
+.btn-home, .btn-next {
+width: 150px;
 }
