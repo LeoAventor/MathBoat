@@ -4,17 +4,20 @@ from puzzle_controller import PUZZLE_CONTROLLER
 from database_controller import DATABASE_CONTROLLER
 from game_data import GAME_DATA
 from user_data import USER_DATA
+from properties import PROPERTIES
 
 
 class GAME_CONTROLLER:
     game_data = object()
     puzzle_controller = object()
     database_controller = object()
+    properties = object()
 
     def __init__(self):
         self.puzzle_controller = PUZZLE_CONTROLLER()
         self.database_controller = DATABASE_CONTROLLER()
         self.game_data = GAME_DATA()
+        self.properties = PROPERTIES()
 
         self.sync_difficulty_for_single_player()
         self.get_new_puzzle_for_single_player()
@@ -29,13 +32,13 @@ class GAME_CONTROLLER:
                 self.game_data.current_status = "correct"
                 self.game_data.inc_current_streak()
 
-                if (self.game_data.current_streak == str(1) and
+                if (self.game_data.current_streak == self.properties.streak_to_level_up and
                         self.game_data.current_single_player_difficulty != "insane"):
                     self.game_data.inc_current_difficulty()
                     self.sync_difficulty_for_single_player()
                     self.game_data.current_streak = str(0)
 
-                if self.game_data.current_streak == str(2):
+                if self.game_data.current_streak == self.properties.streak_to_win_game:
                     self.game_data.current_status = "Winner"
                     self.game_data.inc_win_count()
                     self.reset_game()
@@ -77,10 +80,11 @@ class GAME_CONTROLLER:
         self.puzzle_controller.puzzle_data.update_max_value()
 
     def reset_game(self):
-        self.game_data.current_single_player_difficulty = "easy"
-        self.sync_difficulty_for_single_player()
-        self.game_data.current_attempts = str(3)
+        # self.game_data.current_single_player_difficulty = "easy"
+        # self.game_data.current_attempts = str(3)
         self.game_data.current_streak = str(0)
+        self.game_data.set_initial_values()
+        self.sync_difficulty_for_single_player()
         self.get_new_puzzle_for_single_player()
 
     def get_new_puzzle_for_single_player(self):
@@ -98,4 +102,5 @@ class GAME_CONTROLLER:
             user.user_current_difficulty = self.game_data.current_single_player_difficulty
             user.user_win_count = self.game_data.current_win_count
             user.user_lose_count = self.game_data.current_lose_count
-            self.database_controller.save_to_file(user)
+            # self.database_controller.save_to_file(user)
+            self.database_controller.update_user_data_to_database(user)

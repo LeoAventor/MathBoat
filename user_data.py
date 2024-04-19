@@ -1,4 +1,9 @@
+from properties import PROPERTIES
+
+
 class USER_DATA:
+    properties = object()
+
     username = str()
     password = str()
     user_win_count = str()
@@ -10,10 +15,11 @@ class USER_DATA:
     sign_in_confirmation_status = str()
 
     def __init__(self):
-        self.username = "Username"
-        self.password = "Password"
-        self.sign_up_confirmation_status = "Please register new user!"
-        self.sign_in_confirmation_status = "Welcome, please enter your credentials"
+        self.properties = PROPERTIES()
+        # self.username = "Username"
+        # self.password = "Password"
+        self.sign_up_confirmation_status = self.properties.sign_up_confirmation_status
+        self.sign_in_confirmation_status = self.properties.sign_in_confirmation_status
 
     @staticmethod
     def check_password(input_password):
@@ -21,5 +27,5 @@ class USER_DATA:
             return False
         return True
 
-    def get_user_as_single_string(self):
-        return self.username + ',' + self.password
+    # def get_user_as_single_string(self):
+    #     return self.username + ',' + self.password
