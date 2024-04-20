@@ -8,26 +8,10 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet"  href="{{url_for('static', filename='style.css')}}">
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-   
-
-    #userInput {
-      display: block;
-      margin: 20px auto;
-      height: 40px;
-      font-size: 1.5em;
-      width: 50%;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      padding: 0 10px;
-      margin-right: 10px;
-
-    }
-  </style>
 </head>
 
 <body class="practice-body">
-  <div class="practice-game-stats">
+  <div class="game-stats">
     <div>Correct answer count: {{correct_answer_count}}</div>
     <div>Incorrect answer count: {{incorrect_answer_count}}</div>
     <div>Previous correct answer: {{previous_correct_answer}}</div>
@@ -35,20 +19,20 @@
   <div class="centered-container">
     <div class="row justify-content-center">
       <div class="col-md-8">
-        <div class="practice-math-puzzle">
+        <div class="math-puzzle">
           <div class="symbol-box">{{first_number}}</div>
           <div class="symbol-box">{{operation_symbol}}</div>
           <div class="symbol-box">{{second_number}}</div>
           <div class="symbol-box">{{equality_symbol}}</div>
           <div class="symbol-box">{{result_number}}</div>
         </div>
-        <hr class="practice-single-player">
+        <hr class="hr-practice">
         <form onsubmit="{{url_for('practice')}}" method="post" class="form-inline">
           <input type="text" id="userInput" name="userInput" placeholder="Enter your answer" class="form-control">
           <button class="submit-button" type="submit">Submit</button>
           <div class="correct-status">{{current_status}}</div>
         </form>
-        <hr class="practice-single-player">
+        <hr class="hr-practice">
         <div class="practice-sailboats">
           <!-- Images of sailboats can be added here -->
           <a class="btn submit-button" href={{url_for('home')}}>Home</a>

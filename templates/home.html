@@ -11,17 +11,29 @@
 
 <body class="home-body">
     <div class="container text-center my-5">
-        <h1 class="mb-4" style="color: #FFA500;">Race</h1>
+        <h1 class="mb-4">Race</h1>
         <div class="home-button-box">
             <img src="c:\Users\Leonardo\Downloads\1613901877_441845.gif" alt="Boat" class="home-boat-image">
             <div class="d-grid gap-3">
                 <a class="btn btn-outline-dark btn-lg" href={{url_for('profile')}}>Profile</a>
                 <a class="btn btn-outline-dark btn-lg" href={{url_for('single_player')}}>Single player</a>
-                <a class="btn btn-outline-dark btn-lg" href={{url_for('profile')}}>Quest's</a>
+                <a class="btn btn-outline-dark btn-lg" href={{url_for('quests_level')}}>Quest's</a>
                 <a class="btn btn-outline-dark btn-lg" href={{url_for('practice')}}>Practice</a>
             </div>
         </div>
     </div>
+
+    <div class="dropdown">
+        <button class="btn btn-outline-dark btn-lg dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            Language
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+            <li><a class="dropdown-item" href="#">English <img src="https://example.com/flag-us.png" alt="English flag"></a></li>
+            <li><a class="dropdown-item" href="#">Latvian <img src="https://example.com/flag-lv.png" alt="Latvian flag"></a></li>
+        </ul>
+    </div>
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

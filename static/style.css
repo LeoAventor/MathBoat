@@ -7,11 +7,15 @@
 }
 
 
+body {
+  overflow-y: hidden;
+}
+
 .operator-btn{
   margin: 5px;
 
 }
-.daily-player-body, .practice-body, .single-player-body {
+.daily-player-body,.practice-body,.single-player-body,.quests-level {
 
   background-color: #3CE1F7!important;  
 }
@@ -59,7 +63,7 @@
   color: #333;
 }
 
-.practice-game-stats {
+.game-stats {
   display: flex;
   justify-content: space-around;
   flex-direction: row;
@@ -69,7 +73,7 @@
   margin-bottom: 20px;
 }
 
-.practice-game-stats div{
+.game-stats div{
   background: white;
   padding: 15px;
   border-radius: 5px;
@@ -80,7 +84,7 @@
   margin: 0 10px; 
 }
 
-.practice-math-puzzle {
+.math-puzzle {
   font-size: 24px;
   margin: 20px 0;
   background: white;
@@ -163,7 +167,7 @@
   display: flex;
   align-items: center;
 }
-.practice-single-player {
+.hr-practice,.hr-single-player {
   border: none;
   height: 2px;
   background-color: black;
@@ -204,13 +208,63 @@
   margin-bottom: 10px;
 }
 
+.mb-4{
+  color: #FFA500;
+  }
+
 /* Quests level */
 
+.quests-task-body {
+  background-color: aqua;
+}
 
+.lower-left {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.container-quests {
+  display: flex; /* Use flexbox to align children */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 100vh; /* Full height of the viewport */
+  flex-wrap: wrap;
+
+}
+
+.row-quests {
+  display: flex; /* Use flexbox to align children */
+  flex-wrap: wrap; /* Allow wrapping of items */
+  justify-content: center; /* Center horizontally */
+  gap: 1rem; /* Space between buttons */
+  width: 100%;
+}
+
+.quests-level .bg-white {
+  margin-top: 20px; /* Adjusts the distance from the top */
+  width: 50%; /* Adjusts the width to match the image */
+  margin-left: auto; /* Centers the box horizontally */
+  margin-right: auto; /* Centers the box horizontally */
+}
+
+.btn-light {
+  border-color: #000000!important;
+}
 
 
 /* Quests task */
 
 .btn-home, .btn-next {
 width: 150px;
+}
+
+.home-button-box {
+  position: relative;
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%; /* Adjust this value as needed */
+  left: 0;
 }

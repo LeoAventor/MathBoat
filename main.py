@@ -26,6 +26,9 @@ class APPLICATION_CONTROLLER:
         self.app.add_url_rule("/single_player", "single_player",
                               self.single_player, methods=['POST', 'GET'])
         self.app.add_url_rule("/practice", "practice", self.practice, methods=['POST', 'GET'])
+        self.app.add_url_rule("/quests_task", "quests_task", self.quests_task, methods=['POST', 'GET'])
+        self.app.add_url_rule("/quests_level","quests_level", self.quests_level, methods=['POST','GET'])
+
 
     @staticmethod
     def index():
@@ -113,6 +116,15 @@ class APPLICATION_CONTROLLER:
                                equality_symbol=self.render_controller.render_data.equality_symbol,
                                result_number=self.render_controller.render_data.result_number,
                                current_status=self.render_controller.render_data.current_status)
+    
+    @staticmethod
+    def quests_level():
+        return render_template("quests_level.html")
+    
+    @staticmethod
+    def quests_task():
+        return render_template("quests_task.html")
+
 
 
 if __name__ == "__main__":
