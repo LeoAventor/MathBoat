@@ -28,7 +28,7 @@ class APPLICATION_CONTROLLER:
         self.app.add_url_rule("/practice", "practice", self.practice, methods=['POST', 'GET'])
         self.app.add_url_rule("/quests_task", "quests_task", self.quests_task, methods=['POST', 'GET'])
         self.app.add_url_rule("/quests_level","quests_level", self.quests_level, methods=['POST','GET'])
-
+        #self.app.add_url_rule("/boat_animation","boat_animation", self.boat_animation, methods=['POST','GET'])
 
     @staticmethod
     def index():
@@ -125,7 +125,9 @@ class APPLICATION_CONTROLLER:
     def quests_task():
         return render_template("quests_task.html")
 
-
+    #@staticmethod
+    #def quests_task():
+       # return render_template("boat_animation.js")
 
 if __name__ == "__main__":
     application = APPLICATION_CONTROLLER()

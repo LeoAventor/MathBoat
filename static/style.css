@@ -8,6 +8,7 @@
 
 body {
   overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 .operator-btn{
@@ -267,3 +268,16 @@ width: 150px;
   top: 100%; /* Adjust this value as needed */
   left: 0;
 }
+
+/* Boat Animation */
+/*.boat {
+  width: 100px;
+  height: 100px;
+  background: url('https://raw.githubusercontent.com/spagnuolocarmine/spagnuolocarmine/main/sail.gif') no-repeat center center;
+  background-size: cover;
+  cursor: pointer;
+  position: absolute;
+  transition: trasnform 0.1s linear;
+
+}
+*/
