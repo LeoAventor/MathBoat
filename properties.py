@@ -11,6 +11,7 @@ class PROPERTIES:
     medium_max_value = int()
     hard_max_value = int()
     insane_max_value = int()
+    initial_language = str()
 
     def __init__(self):
         with open('config.properties', 'r') as file:
@@ -44,3 +45,5 @@ class PROPERTIES:
                         self.hard_max_value = int(tmp_data[1].replace("\n", ""))
                     case 'insane_max_value':
                         self.insane_max_value = int(tmp_data[1].replace("\n", ""))
+                    case 'initial_language':
+                        self.initial_language = tmp_data[1].replace("\n", "")

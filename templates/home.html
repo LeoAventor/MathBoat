@@ -15,23 +15,25 @@
         <div class="home-button-box">
             <img src="c:\Users\Leonardo\Downloads\1613901877_441845.gif" alt="Boat" class="home-boat-image">
             <div class="d-grid gap-3">
-                <a class="btn btn-outline-dark btn-lg" href={{url_for('profile')}}>Profile</a>
-                <a class="btn btn-outline-dark btn-lg" href={{url_for('single_player')}}>Single player</a>
-                <a class="btn btn-outline-dark btn-lg" href={{url_for('quests_level')}}>Quest's</a>
+                <a class="btn btn-outline-dark btn-lg" href={{url_for('profile')}}>{{profile}}</a>
+                <a class="btn btn-outline-dark btn-lg" href={{url_for('single_player')}}>{{single_player}}</a>
+                <a class="btn btn-outline-dark btn-lg" href={{url_for('quests_level')}}>{{quests}}</a>
                 <a class="btn btn-outline-dark btn-lg" href={{url_for('practice')}}>Practice</a>
             </div>
         </div>
     </div>
 
-    <div class="dropdown">
-        <button class="btn btn-outline-dark btn-lg dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-            Language
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="languageDropdown">
-            <li><a class="dropdown-item" href="#">English <img src="https://example.com/flag-us.png" alt="English flag"></a></li>
-            <li><a class="dropdown-item" href="#">Latvian <img src="https://example.com/flag-lv.png" alt="Latvian flag"></a></li>
-        </ul>
-    </div>
+    <form onsubmit="{{url_for('home')}}" method="post">
+        <div class="dropdown">
+            <button class="btn btn-outline-dark btn-lg dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                Language
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+                <li><button class="dropdown-item" type="submit" name="language_button" value="en">English</button></li>
+                <li><button class="dropdown-item" type="submit" name="language_button" value="lv">Latvian</button></li>
+            </ul>
+        </div>
+    </form>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
