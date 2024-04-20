@@ -1,7 +1,10 @@
 from random import randint
+from properties import PROPERTIES
 
 
 class PUZZLE_DATA:
+    properties = object()
+
     # Puzzle data
     first_number = int()
     operation_symbol = str()
@@ -15,6 +18,8 @@ class PUZZLE_DATA:
     difficulty = str()
 
     def __init__(self):
+        self.properties = PROPERTIES()
+
         self.equality_symbol = "="
         self.update_max_value()
 
@@ -30,13 +35,13 @@ class PUZZLE_DATA:
     def update_max_value(self):
         match self.difficulty:
             case "easy":
-                self.max_value = 50
+                self.max_value = self.properties.easy_max_value
             case "medium":
-                self.max_value = 100
+                self.max_value = self.properties.medium_max_value
             case "hard":
-                self.max_value = 10
+                self.max_value = self.properties.hard_max_value
             case "insane":
-                self.max_value = 15
+                self.max_value = self.properties.insane_max_value
 
     def generate_new_operation_symbol(self):
         match self.difficulty:

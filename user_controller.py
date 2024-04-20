@@ -1,6 +1,7 @@
 from user_data import USER_DATA
 from game_data import GAME_DATA
 from database_controller import DATABASE_CONTROLLER
+from properties import PROPERTIES
 
 
 class USER_CONTROLLER:
@@ -14,15 +15,18 @@ class USER_CONTROLLER:
     # Class instances
     user_data = object()
     database_controller = object()
+    properties = object()
 
     def __init__(self):
         self.user_data = USER_DATA()
         self.database_controller = DATABASE_CONTROLLER()
+        self.properties = PROPERTIES()
 
-        self.is_authorized = False
+        self.is_authorized = self.properties.is_authorized
 
     def sign_in(self):
-        self.users_list = self.database_controller.load_usernames_from_file()
+        # self.users_list = self.database_controller.load_usernames_from_file()
+        self.users_list = self.database_controller.load_users_from_database()
         if self.input_username in self.users_list.keys():
             if self.input_password == self.users_list[self.input_username]:
                 self.is_authorized = True
@@ -33,12 +37,13 @@ class USER_CONTROLLER:
             self.user_data.sign_up_confirmation_status = "Username does not exist!"
 
     def sign_up(self):
-        self.users_list = self.database_controller.load_usernames_from_file()
+        # self.users_list = self.database_controller.load_usernames_from_file()
+        self.users_list = self.database_controller.load_users_from_database()
         if self.input_password == self.input_confirm_password:
             if self.input_username not in self.users_list.keys():
                 if self.user_data.check_password(self.input_password):
                     self.update_current_user()
-                    self.database_controller.save_to_file(self.user_data)
+                    self.database_controller.save_user_to_database(self.user_data)
                     self.user_data.sign_up_confirmation_status = "User created successfully"
                 else:
                     self.user_data.sign_up_confirmation_status = "Password must contain at least 8 digit's"
@@ -62,9 +67,10 @@ class USER_CONTROLLER:
         self.input_confirm_password = input_confirm_password
 
     def load_user(self):
-        tmp_user = self.database_controller.load_user_form_file(self.input_username)
+        # tmp_user = self.database_controller.load_user_form_file(self.input_username)
+        tmp_user = self.database_controller.load_user_data_from_database(self.input_username)
         self.user_data.username = tmp_user['username']
-        self.user_data.password = tmp_user['password']
+        # self.user_data.password = tmp_user['password']
         self.user_data.user_lose_count = tmp_user['user_lose_count']
         self.user_data.user_win_count = tmp_user['user_win_count']
         self.user_data.user_current_streak = tmp_user['user_current_streak']

@@ -1,7 +1,11 @@
 import random
 
+from properties import PROPERTIES
+
 
 class GAME_DATA:
+    properties = object()
+
     # Common fields
     current_streak = str()  # Single player, Profile
     current_single_player_difficulty = str()  # Single player, Profile
@@ -34,10 +38,11 @@ class GAME_DATA:
     previous_correct_answer = str()
 
     def __init__(self):
+        self.properties = PROPERTIES()
+
         # Single player fields
         self.current_streak = str(0)
-        self.current_single_player_difficulty = "easy"
-        self.current_attempts = str(3)
+        self.set_initial_values()
         # Profile fields
         self.current_lose_count = str(0)
         self.current_win_count = str(0)
@@ -47,6 +52,10 @@ class GAME_DATA:
         self.previous_correct_answer = "None"
         # Common fields
         self.current_status = "Welcome"
+
+    def set_initial_values(self):
+        self.current_single_player_difficulty = self.properties.initial_difficulty
+        self.current_attempts = self.properties.initial_attempts
 
     def sync_puzzle_data_to_game_data_for_single_player(self, puzzle_data):
         # Mapping | Puzzle data -> Game data | Single player
