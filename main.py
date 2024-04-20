@@ -3,6 +3,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from game_controller import GAME_CONTROLLER
 from user_controller import USER_CONTROLLER
 from render_controller import RENDER_CONTROLLER
+from language_controller import LANGUAGE_CONTROLLER
 
 
 class APPLICATION_CONTROLLER:
@@ -10,16 +11,18 @@ class APPLICATION_CONTROLLER:
     game_controller = object()
     user_controller = object()
     render_controller = object()
+    language_controller = object()
 
     def __init__(self):
         # VARIABLES
         self.game_controller = GAME_CONTROLLER()
         self.user_controller = USER_CONTROLLER()
         self.render_controller = RENDER_CONTROLLER()
+        self.language_controller = LANGUAGE_CONTROLLER()
 
         # ENDPOINTS
         self.app.add_url_rule("/", "index", self.index)
-        self.app.add_url_rule("/home", "home", self.home)
+        self.app.add_url_rule("/home", "home", self.home, methods=['POST', 'GET'])
         self.app.add_url_rule("/login", "login", self.login, methods=['POST', 'GET'])
         self.app.add_url_rule("/sign_up", "sign_up", self.sign_up, methods=['POST', 'GET'])
         self.app.add_url_rule("/profile", "profile", self.profile)
@@ -35,9 +38,17 @@ class APPLICATION_CONTROLLER:
         return render_template("index.html")
 
     def home(self):
-        print(self.user_controller.is_authorized)
         if self.user_controller.is_authorized:
-            return render_template('home.html')
+            if request.method == 'POST':
+                if request.form['language_button'] == 'lv':
+                    self.language_controller.set_lv()
+                elif request.form['language_button'] == 'en':
+                    self.language_controller.set_en()
+
+            return render_template('home.html',
+                                   profile=self.language_controller.language_data.profile,
+                                   single_player=self.language_controller.language_data.single_player,
+                                   quests=self.language_controller.language_data.quests)
         else:
             return redirect(url_for('login'))
 
