@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Practice</title>
+  <title>{{practice}}</title>
   <!-- Bootstrap CSS -->
   <link rel="stylesheet"  href="{{url_for('static', filename='style.css')}}">
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
@@ -29,13 +29,13 @@
         <hr class="hr-practice">
         <form onsubmit="{{url_for('practice')}}" method="post" class="form-inline">
           <input type="text" id="userInput" name="userInput" placeholder="Enter your answer" class="form-control">
-          <button class="submit-button" type="submit">Submit</button>
+          <button class="submit-button" type="submit">{{submit}}</button>
           <div class="correct-status">{{current_status}}</div>
         </form>
         <hr class="hr-practice">
         <div class="practice-sailboats">
           <!-- Images of sailboats can be added here -->
-          <a class="btn submit-button" href={{url_for('home')}}>Home</a>
+          <a class="btn btn-custom" href={{url_for('home')}}>{{home}}</a>
         </div>
       </div>
     </div>

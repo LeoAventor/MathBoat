@@ -15,7 +15,7 @@
     <div class="row">
       <div class="col text-center">
         <div class="profile-box">
-          <h2>Profile</h2>
+          <h2>{{profile}}</h2>
         </div>
       </div>
     </div>
@@ -23,20 +23,20 @@
     <div class="row">
       <div class="col">
         <div class="user-stats-container">
-          <h2>Records</h2>
+          <h2>{{records}}</h2>
           <ul>
-            <li><strong>Win count:</strong> {{user_win_count}}</li>
-            <li><strong>Lose count:</strong> {{user_lose_count}}</li>
+            <li><strong>{{win_count:}}</strong> {{user_win_count}}</li>
+            <li><strong>{{lose_count:}}</strong> {{user_lose_count}}</li>
           </ul>
         </div>
       </div>
       <div class="col d-flex justify-content-end">
         <div class="additional-info-container">
-          <h2>Current state</h2>
+          <h2>{{current_state}}</h2>
           <ul>
-            <li><strong>Current difficulty:</strong> {{user_current_difficulty}}</li>
-            <li><strong>Current streak:</strong> {{user_current_streak}}</li>
-            <li><strong>Current attempts:</strong> {{user_current_attempts}}</li>
+            <li><strong>{{current_difficulty:}}</strong> {{user_current_difficulty}}</li>
+            <li><strong>{{current_streak:}}</strong> {{user_current_streak}}</li>
+            <li><strong>{{current_attempts:}}</strong> {{user_current_attempts}}</li>
           </ul>
         </div>
       </div>
@@ -44,7 +44,7 @@
 
     <div class="row fixed-bottom mb-3">
       <div class="col-md-12 text-center">
-        <a class="btn btn-custom btn-lg w-50" href="{{url_for('home')}}">Home</a>
+        <a class="btn btn-custom btn-lg w-50" href="{{url_for('home')}}">{{home}}</a>
       </div>
     </div>
   </div>

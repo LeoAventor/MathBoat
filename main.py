@@ -46,9 +46,15 @@ class APPLICATION_CONTROLLER:
                     self.language_controller.set_en()
 
             return render_template('home.html',
+                                   home=self.language_controller.language_data.home,
+                                   race=self.language_controller.language_data.race,
                                    profile=self.language_controller.language_data.profile,
                                    single_player=self.language_controller.language_data.single_player,
-                                   quests=self.language_controller.language_data.quests)
+                                   quests=self.language_controller.language_data.quests,
+                                   practice=self.language_controller.language_data.practice,
+                                   language=self.language_controller.language_data.language,
+                                   english=self.language_controller.language_data.english,
+                                   latvian=self.language_controller.language_data.latvian)
         else:
             return redirect(url_for('login'))
 
@@ -86,7 +92,14 @@ class APPLICATION_CONTROLLER:
                                user_lose_count=self.render_controller.render_data.user_lose_count,
                                user_current_difficulty=self.render_controller.render_data.user_current_difficulty,
                                user_current_streak=self.render_controller.render_data.user_current_streak,
-                               user_current_attempts=self.render_controller.render_data.user_current_attempts)
+                               user_current_attempts=self.render_controller.render_data.user_current_attempts,
+                               records=self.language_controller.language_data.records,
+                               win_count=self.language_controller.language_data.win_count,
+                               lose_count=self.language_controller.language_data.lose_count,
+                               current_state=self.language_controller.language_data.current_state,
+                               current_difficulty=self.language_controller.language_data.current_difficulty,
+                               current_streak=self.language_controller.language_data.current_streak,
+                               current_attempts=self.language_controller.language_data.current_attempts)
 
     # @app.route("/multiplayer")
     # def multiplayer(self):
@@ -126,7 +139,13 @@ class APPLICATION_CONTROLLER:
                                second_number=self.render_controller.render_data.second_number,
                                equality_symbol=self.render_controller.render_data.equality_symbol,
                                result_number=self.render_controller.render_data.result_number,
-                               current_status=self.render_controller.render_data.current_status)
+                               current_status=self.render_controller.render_data.current_status, 
+                                #correct_answer_count=self.language_controller.language_data.correct_answer_count,
+                                #incorrect_answer_count=self.language_controller.language_data.incorrect_answer_count,
+                                #previous_correct_answer=self.language_controller.language_data.previous_correct_answer, 
+                                #submit=self.language_controller.language_data.submit,
+                                current_status=self.language_controller.language_data.current_status,
+                                home=self.language_controller.language_data.home)
     
     @staticmethod
     def quests_level():

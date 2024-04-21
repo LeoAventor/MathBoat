@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Single player</title>
+  <title>{single_player}</title>
   <!-- Bootstrap CSS -->
   <link rel="stylesheet"  href="{{url_for('static', filename='style.css')}}">
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
@@ -12,9 +12,9 @@
 
 <body class="single-player-body">
   <div class="game-stats">
-    <div>Current streak: {{current_streak}}</div>
-    <div>Current difficulty: {{current_difficulty}}</div>
-    <div>Current attempts: {{current_attempts}}</div>
+    <div>current_streak: {{current_streak}}</div>
+    <div>current_difficulty: {{current_difficulty}}</div>
+    <div>current_attempts: {{current_attempts}}</div>
   </div>
   <div class="centered-container">
     <div class="row justify-content-center">
@@ -29,17 +29,71 @@
         <hr class="hr-single-player">
         <form onsubmit="{{url_for('single_player')}}" method="post" class="form-inline">
           <input type="text" id="userInput" name="userInput" placeholder="Enter your answer" class="form-control">
-          <button class="submit-button" type="submit">Submit</button>
+          <button class="submit-button" type="submit">{{submit}}</button>
           <div class="correct-status">{{current_status}}</div>
         </form>
         <hr class="hr-single-player">
         <div class="single-player-sailboats">
           <!-- Images of sailboats can be added here -->
-          <a class="btn submit-button" href={{url_for('home')}}>Home</a>
+          <a class="btn submit-button" href={{url_for('home')}}>{{home}}</a>
         </div>
       </div>
     </div>
   </div>
-</body>
 
+<script>// Initialize variables for game state
+  let correctStreak = 0;
+  let incorrectStreak = 0;
+  let boatSpeed = 5; // Initial speed of the boat
+  
+  // Function to move the boat
+  function moveBoat() {
+    const boat = document.querySelector('.boat');
+    let currentPosition = parseInt(boat.style.left, 10) || 0;
+    currentPosition += boatSpeed;
+    boat.style.left = currentPosition + 'px';
+  }
+  
+  // Function to update game state based on current_status
+  function updateGameState(currentStatus) {
+    if (currentStatus === 'correct') {
+      correctStreak++;
+      incorrectStreak = 0;
+      boatSpeed++;
+    } else if (currentStatus === 'incorrect') {
+      incorrectStreak++;
+      correctStreak = 0;
+      boatSpeed = Math.max(boatSpeed - 1, 1);
+    }
+  
+    // Check for game over condition
+    if (incorrectStreak >= 3) {
+      // Hide the boat and reset the game
+      document.querySelector('.boat').style.display = 'none';
+      resetGame();
+    }
+  
+    // Check for win condition
+    if (correctStreak >= 10) {
+      // Move the boat to the finish line and reset
+      document.querySelector('.boat').style.left = '100%';
+      resetGame();
+    }
+  }
+  
+  // Function to reset the game
+  function resetGame() {
+    correctStreak = 0;
+    incorrectStreak = 0;
+    boatSpeed = 5;
+    document.querySelector('.boat').style.left = '0px';
+    document.querySelector('.boat').style.display = 'block';
+  }
+  
+  // Call moveBoat function periodically to animate the boat
+  setInterval(moveBoat, 100);
+  
+  // Update game state based on current_status from the server
+  // This would be done in response to form submission or other event</script>
+</body>
 </html>

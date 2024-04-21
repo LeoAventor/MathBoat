@@ -20,12 +20,59 @@ class LANGUAGE_CONTROLLER:
                 field = line.split('=', 1)
                 field[1].replace('\n', '')
                 match field[0]:
+                    case 'menu':
+                        self.language_data.menu = field[1]
+                    case 'race':
+                        self.language_data.race = field[1]
                     case 'profile':
                         self.language_data.profile = field[1]
                     case 'single_player':
-                        self.language_data.profile = field[1]
+                        self.language_data.single_player = field[1]
                     case 'quests':
                         self.language_data.quests = field[1]
+                    case 'practice':
+                        self.language_data.practice = field[1]
+                    case 'language':
+                        self.language_data.language = field[1]
+                    case 'english':
+                        self.language_data.english = field[1]
+                    case 'latvian':
+                        self.language_data.latvian = field[1]
+                    case 'records':
+                        self.language_data.records = field[1]
+                    case 'win_count':
+                        self.language_data.win_count = field[1]
+                    case 'lose_count':
+                        self.language_data.lose_count = field[1]
+                    case 'current_state':
+                        self.language_data.current_state = field[1]
+                    case 'current_difficulty':
+                        self.language_data.current_difficulty = field[1]
+                    case 'current_streak':
+                        self.language_data.current_streak = field[1]
+                    case 'current_attempts':
+                        self.language_data.current_attempts = field[1]
+                    case 'correct_answer_count':
+                        self.language_data.correct_answer_count = field[1]
+                    case 'incorrect_answer_count':
+                        self.language_data.incorrect_answer_count = field[1]
+                    case 'previous_correct_answer':
+                        self.language_data.previous_correct_answer = field[1]
+                    case 'submit':
+                        self.language_data.submit = field[1]
+                    case 'current_status':
+                        self.language_data.current_status = field[1]
+                    case 'home':
+                        self.language_data.home = field[1]
+                    case 'select_quest':
+                        self.language_data.select_quest = field[1]
+                    case 'quest':
+                        self.language_data.quest = field[1]
+                    case 'next':
+                        self.language_data.next = field[1]
+                    
+
+    
 
     def change_language(self, language):
         self.current_language = language
