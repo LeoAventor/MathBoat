@@ -112,6 +112,7 @@ class APPLICATION_CONTROLLER:
                 self.game_controller.sync_game_data(self.user_controller.user_data)
 
         self.render_controller.update(self.game_controller.game_data)
+
         return render_template('single_player.html',
                                current_streak=self.render_controller.render_data.current_streak,
                                current_difficulty=self.render_controller.render_data.current_single_player_difficulty,
@@ -130,6 +131,7 @@ class APPLICATION_CONTROLLER:
                 #self.game_controller.sync_game_data(self.user_controller.user_data)
 
         self.render_controller.update(self.game_controller.game_data, "practice")
+        self.language_controller.set_current_status(self.render_controller.render_data.current_status)
         return render_template('practice.html',
                                correct_answer_count=self.render_controller.render_data.correct_answer_count,
                                incorrect_answer_count=self.render_controller.render_data.incorrect_answer_count,
@@ -139,13 +141,13 @@ class APPLICATION_CONTROLLER:
                                second_number=self.render_controller.render_data.second_number,
                                equality_symbol=self.render_controller.render_data.equality_symbol,
                                result_number=self.render_controller.render_data.result_number,
-                               current_status=self.render_controller.render_data.current_status, 
-                                #correct_answer_count=self.language_controller.language_data.correct_answer_count,
-                                #incorrect_answer_count=self.language_controller.language_data.incorrect_answer_count,
-                                #previous_correct_answer=self.language_controller.language_data.previous_correct_answer, 
-                                #submit=self.language_controller.language_data.submit,
-                                current_status=self.language_controller.language_data.current_status,
-                                home=self.language_controller.language_data.home)
+                               #current_status=self.render_controller.render_data.current_status,
+                               #correct_answer_count=self.language_controller.language_data.correct_answer_count,
+                               #incorrect_answer_count=self.language_controller.language_data.incorrect_answer_count,
+                               #previous_correct_answer=self.language_controller.language_data.previous_correct_answer,
+                               submit=self.language_controller.language_data.submit,
+                               current_status=self.language_controller.language_data.current_status,
+                               home=self.language_controller.language_data.home)
     
     @staticmethod
     def quests_level():
