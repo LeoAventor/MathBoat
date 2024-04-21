@@ -41,59 +41,70 @@
     </div>
   </div>
 
-<script>// Initialize variables for game state
-  let correctStreak = 0;
-  let incorrectStreak = 0;
-  let boatSpeed = 5; // Initial speed of the boat
+  <script>
+    // Initialize variables for game state
+    let correctStreak = 0;
+    let incorrectStreak = 0;
+    let boatSpeed = 5; // Initial speed of the boat
+    let boat = document.querySelector('.boat'); // Select the boat element
   
-  // Function to move the boat
-  function moveBoat() {
-    const boat = document.querySelector('.boat');
-    let currentPosition = parseInt(boat.style.left, 10) || 0;
-    currentPosition += boatSpeed;
-    boat.style.left = currentPosition + 'px';
-  }
+    // Function to move the boat
+    function moveBoat() {
+      let currentPosition = parseInt(boat.style.left, 10) || 0;
+      currentPosition += boatSpeed;
+      boat.style.left = currentPosition + 'px';
+      // Check if the boat has reached the right side of the webpage
+      if (currentPosition >= window.innerWidth) {
+        boat.style.left = '0px'; // Reset boat position to the left side
+      }
+    }
   
-  // Function to update game state based on current_status
-  function updateGameState(currentStatus) {
-    if (currentStatus === 'correct') {
-      correctStreak++;
-      incorrectStreak = 0;
-      boatSpeed++;
-    } else if (currentStatus === 'incorrect') {
-      incorrectStreak++;
+    // Function to update game state based on current_status
+    function updateGameState(currentStatus) {
+      if (currentStatus === 'correct') {
+        correctStreak++;
+        incorrectStreak = 0;
+        boatSpeed++;
+      } else if (currentStatus === 'incorrect') {
+        incorrectStreak++;
+        correctStreak = 0;
+        boatSpeed = Math.max(boatSpeed - 1, 1);
+      }
+  
+      // Check for game over condition
+      if (incorrectStreak >= 3) {
+        // Hide the boat and reset the game
+        boat.style.display = 'none';
+        resetGame();
+      }
+  
+      // Check for win condition
+      if (correctStreak >= 10) {
+        // Move the boat to the finish line and reset
+        boat.style.left = '100%';
+        resetGame();
+      }
+    }
+  
+    // Function to reset the game
+    function resetGame() {
       correctStreak = 0;
-      boatSpeed = Math.max(boatSpeed - 1, 1);
+      incorrectStreak = 0;
+      boatSpeed = 5;
+      boat.style.left = '0px';
+      boat.style.display = 'block';
     }
   
-    // Check for game over condition
-    if (incorrectStreak >= 3) {
-      // Hide the boat and reset the game
-      document.querySelector('.boat').style.display = 'none';
-      resetGame();
-    }
+    // Call moveBoat function periodically to animate the boat
+    setInterval(moveBoat, 100);
   
-    // Check for win condition
-    if (correctStreak >= 10) {
-      // Move the boat to the finish line and reset
-      document.querySelector('.boat').style.left = '100%';
-      resetGame();
-    }
-  }
-  
-  // Function to reset the game
-  function resetGame() {
-    correctStreak = 0;
-    incorrectStreak = 0;
-    boatSpeed = 5;
-    document.querySelector('.boat').style.left = '0px';
-    document.querySelector('.boat').style.display = 'block';
-  }
-  
-  // Call moveBoat function periodically to animate the boat
-  setInterval(moveBoat, 100);
-  
-  // Update game state based on current_status from the server
-  // This would be done in response to form submission or other event</script>
+    // Add event listener to form submission to update game state
+    document.querySelector('form').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent form from submitting
+      const currentStatus = document.querySelector('.correct-status').textContent;
+      updateGameState(currentStatus);
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
