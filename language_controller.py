@@ -14,10 +14,10 @@ class LANGUAGE_CONTROLLER:
         self.set_language()
 
     def set_language(self):
-        with open('languages\\' + self.current_language + '.properties') as file:
+        with open('languages\\' + self.current_language + '.properties', 'r', encoding="utf8") as file:
             lines = file.readlines()
             for line in lines:
-                field = line.split('=', 1)
+                field = str(line).split('=', 1)
                 field[1].replace('\n', '')
                 match field[0]:
                     case 'menu':
@@ -60,8 +60,8 @@ class LANGUAGE_CONTROLLER:
                         self.language_data.previous_correct_answer = field[1]
                     case 'submit':
                         self.language_data.submit = field[1]
-                    case 'current_status':
-                        self.language_data.current_status = field[1]
+                    # case 'current_status':
+                    #     self.language_data.current_status = field[1]
                     case 'home':
                         self.language_data.home = field[1]
                     case 'select_quest':
@@ -70,9 +70,6 @@ class LANGUAGE_CONTROLLER:
                         self.language_data.quest = field[1]
                     case 'next':
                         self.language_data.next = field[1]
-                    
-
-    
 
     def change_language(self, language):
         self.current_language = language
@@ -85,3 +82,10 @@ class LANGUAGE_CONTROLLER:
     def set_en(self):
         self.current_language = 'en'
         self.set_language()
+
+    def set_current_status(self, current_status):
+        if self.current_language == 'lv':
+            match self.language_data.current_status:
+                case "correct":
+                    self.language_data.current_status = 'Pareizi'
+                # todo cases

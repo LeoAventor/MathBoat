@@ -270,14 +270,4 @@ width: 150px;
 }
 
 /* Boat Animation */
-/*.boat {
-  width: 100px;
-  height: 100px;
-  background: url('https://raw.githubusercontent.com/spagnuolocarmine/spagnuolocarmine/main/sail.gif') no-repeat center center;
-  background-size: cover;
-  cursor: pointer;
-  position: absolute;
-  transition: trasnform 0.1s linear;
 
-}
-*/
