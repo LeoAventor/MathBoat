@@ -65,7 +65,8 @@ class APPLICATION_CONTROLLER:
             self.user_controller.sync_game_data(self.game_controller.game_data)
             return redirect(url_for('home'))
 
-        self.render_controller.update(self.user_controller.user_data)    
+        self.render_controller.update(self.user_controller.user_data)
+
         return render_template('login.html',
                                username=self.render_controller.render_data.username,
                                password=self.render_controller.render_data.password,
@@ -128,7 +129,7 @@ class APPLICATION_CONTROLLER:
         if request.method == 'POST':
             if request.form['userInput'] != '':
                 self.game_controller.check_result_for_practice(user_input=request.form["userInput"])
-                #self.game_controller.sync_game_data(self.user_controller.user_data)
+                # self.game_controller.sync_game_data(self.user_controller.user_data)
 
         self.render_controller.update(self.game_controller.game_data, "practice")
         self.language_controller.set_current_status(self.render_controller.render_data.current_status)
@@ -142,9 +143,11 @@ class APPLICATION_CONTROLLER:
                                equality_symbol=self.render_controller.render_data.equality_symbol,
                                result_number=self.render_controller.render_data.result_number,
                                #current_status=self.render_controller.render_data.current_status,
+
                                #correct_answer_count=self.language_controller.language_data.correct_answer_count,
                                #incorrect_answer_count=self.language_controller.language_data.incorrect_answer_count,
                                #previous_correct_answer=self.language_controller.language_data.previous_correct_answer,
+
                                submit=self.language_controller.language_data.submit,
                                current_status=self.language_controller.language_data.current_status,
                                home=self.language_controller.language_data.home)
