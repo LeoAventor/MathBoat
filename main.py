@@ -87,6 +87,7 @@ class APPLICATION_CONTROLLER:
 
     def profile(self):
         self.render_controller.update(self.user_controller.user_data)
+        self.language_controller.set_current_status(self.render_controller.render_data.current_status)
         return render_template('profile.html',
                                user_win_count=self.render_controller.render_data.user_win_count,
                                user_lose_count=self.render_controller.render_data.user_lose_count,
@@ -94,12 +95,15 @@ class APPLICATION_CONTROLLER:
                                user_current_streak=self.render_controller.render_data.user_current_streak,
                                user_current_attempts=self.render_controller.render_data.user_current_attempts,
                                records=self.language_controller.language_data.records,
-                               win_count=self.language_controller.language_data.win_count,
-                               lose_count=self.language_controller.language_data.lose_count,
+                               win_count_txt=self.language_controller.language_data.win_count_txt,
+                               lose_count_txt=self.language_controller.language_data.lose_count_txt,
                                current_state=self.language_controller.language_data.current_state,
-                               current_difficulty=self.language_controller.language_data.current_difficulty,
-                               current_streak=self.language_controller.language_data.current_streak,
-                               current_attempts=self.language_controller.language_data.current_attempts)
+                               current_difficulty_txt=self.language_controller.language_data.current_difficulty_txt,
+                               current_streak_txt=self.language_controller.language_data.current_streak_txt,
+                               current_attempts_txt=self.language_controller.language_data.current_attempts_txt,
+                               user_current_difficulty=self.language_controller.language_data.user_current_difficulty,
+                               user_current_streak=self.language_controller.language_data.user_current_streak,
+                               user_current_attempts=self.language_controller.language_data.user_current_attempts,)
 
     # @app.route("/multiplayer")
     # def multiplayer(self):
@@ -141,10 +145,9 @@ class APPLICATION_CONTROLLER:
                                second_number=self.render_controller.render_data.second_number,
                                equality_symbol=self.render_controller.render_data.equality_symbol,
                                result_number=self.render_controller.render_data.result_number,
-                               #current_status=self.render_controller.render_data.current_status,
-                               #correct_answer_count=self.language_controller.language_data.correct_answer_count,
-                               #incorrect_answer_count=self.language_controller.language_data.incorrect_answer_count,
-                               #previous_correct_answer=self.language_controller.language_data.previous_correct_answer,
+                               correct_answer_count_txt=self.language_controller.language_data.correct_answer_count_txt,
+                               incorrect_answer_count_txt=self.language_controller.language_data.incorrect_answer_count_txt,
+                               previous_correct_answer_txt=self.language_controller.language_data.previous_correct_answer_txt,
                                submit=self.language_controller.language_data.submit,
                                current_status=self.language_controller.language_data.current_status,
                                home=self.language_controller.language_data.home)

@@ -10,9 +10,9 @@
 </head>
 <body class="single-player-body">
   <div class="game-stats">
-    <div>Current streak: {{current_streak}}</div>
-    <div>Current difficulty: {{current_difficulty}}</div>
-    <div>Current attempts: {{current_attempts}}</div>
+    <div>{{current_streak_txt}}: {{current_streak}}</div>
+    <div>{{current_difficulty_txt}}: {{current_difficulty}}</div>
+    <div>{{current_attempts_txt}}: {{current_attempts}}</div>
   </div>
   <div class="centered-container">
     <div class="row justify-content-center">
@@ -28,14 +28,14 @@
         <!-- Tiek izmantots AJAX request, lai nepārlādētu mājaslapu -->
         <form onsubmit="return false;" method="post" class="form-inline">
           <input type="text" id="userInput" name="userInput" placeholder="Enter your answer" class="form-control">
-          <button class="submit-button" type="submit">Submit</button>
+          <button class="submit-button" type="submit">{{submit}}</button>
           <div class="correct-status">{{current_status}}</div>
         </form>
         <hr class="hr-single-player">
         <div class="single-player-sailboats">
           <!-- Boat image added here -->
           <img src="https://raw.githubusercontent.com/spagnuolocarmine/spagnuolocarmine/main/sail.gif" class="boat" style="position: absolute; left: 0px; bottom: 0px;">
-          <a class="btn submit-button" href="{{url_for('home')}}">Home</a>
+          <a class="btn submit-button" href="{{url_for('home')}}">{{home}}</a>
         </div>
       </div>
     </div>
