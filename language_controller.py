@@ -40,10 +40,10 @@ class LANGUAGE_CONTROLLER:
                         self.language_data.latvian = field[1]
                     case 'records':
                         self.language_data.records = field[1]
-                    case 'win_count':
-                        self.language_data.win_count = field[1]
-                    case 'lose_count':
-                        self.language_data.lose_count = field[1]
+                    case 'win_count_txt':
+                        self.language_data.win_count_txt = field[1]
+                    case 'lose_count_txt':
+                        self.language_data.lose_count_txt = field[1]
                     case 'current_state':
                         self.language_data.current_state = field[1]
                     case 'current_difficulty':
@@ -52,12 +52,12 @@ class LANGUAGE_CONTROLLER:
                         self.language_data.current_streak = field[1]
                     case 'current_attempts':
                         self.language_data.current_attempts = field[1]
-                    case 'correct_answer_count':
-                        self.language_data.correct_answer_count = field[1]
-                    case 'incorrect_answer_count':
-                        self.language_data.incorrect_answer_count = field[1]
-                    case 'previous_correct_answer':
-                        self.language_data.previous_correct_answer = field[1]
+                    case 'correct_answer_count_txt':
+                        self.language_data.correct_answer_count_txt = field[1]
+                    case 'incorrect_answer_count_txt':
+                        self.language_data.incorrect_answer_count_txt = field[1]
+                    case 'previous_correct_answer_txt':
+                        self.language_data.previous_correct_answer_txt = field[1]
                     case 'submit':
                         self.language_data.submit = field[1]
                     # case 'current_status':
@@ -91,3 +91,17 @@ class LANGUAGE_CONTROLLER:
                     self.language_data.current_status = 'Pareizi'
         else:
             self.language_data.current_status = current_status
+                
+    def user_current_difficulty(self, user_current_difficulty):
+            if self.current_language == 'lv':
+                match self.language_data.user_current_difficulty:
+                    case "easy":
+                        self.language_data.user_current_difficulty = 'viegls'
+                    case "medium":
+                        self.language_data.user_current_difficulty = 'vidējs'
+                    case "hard":
+                        self.language_data.user_current_difficulty = 'grūts'
+                    case "insane":
+                        self.language_data.user_current_difficulty = 'ļoti_grūts'
+
+           
