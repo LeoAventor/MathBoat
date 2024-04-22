@@ -65,7 +65,8 @@ class APPLICATION_CONTROLLER:
             self.user_controller.sync_game_data(self.game_controller.game_data)
             return redirect(url_for('home'))
 
-        self.render_controller.update(self.user_controller.user_data)    
+        self.render_controller.update(self.user_controller.user_data)
+
         return render_template('login.html',
                                username=self.render_controller.render_data.username,
                                password=self.render_controller.render_data.password,
@@ -132,7 +133,7 @@ class APPLICATION_CONTROLLER:
         if request.method == 'POST':
             if request.form['userInput'] != '':
                 self.game_controller.check_result_for_practice(user_input=request.form["userInput"])
-                #self.game_controller.sync_game_data(self.user_controller.user_data)
+                # self.game_controller.sync_game_data(self.user_controller.user_data)
 
         self.render_controller.update(self.game_controller.game_data, "practice")
         self.language_controller.set_current_status(self.render_controller.render_data.current_status)

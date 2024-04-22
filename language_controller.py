@@ -84,10 +84,13 @@ class LANGUAGE_CONTROLLER:
         self.set_language()
 
     def set_current_status(self, current_status):
+        print(self.current_language)
         if self.current_language == 'lv':
-            match self.language_data.current_status:
+            match current_status:
                 case "correct":
                     self.language_data.current_status = 'Pareizi'
+        else:
+            self.language_data.current_status = current_status
                 
     def user_current_difficulty(self, user_current_difficulty):
             if self.current_language == 'lv':
@@ -101,4 +104,4 @@ class LANGUAGE_CONTROLLER:
                     case "insane":
                         self.language_data.user_current_difficulty = 'ļoti_grūts'
 
-                   
+           
