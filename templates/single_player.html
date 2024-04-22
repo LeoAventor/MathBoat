@@ -1,31 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{single_player}</title>
+  <title>Single Player</title>
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet"  href="{{url_for('static', filename='style.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
 </head>
-
-<style>
-  .boat {
-  width: 100px;
-  height: 100px;
-  background: url('https://raw.githubusercontent.com/spagnuolocarmine/spagnuolocarmine/main/sail.gif') no-repeat center center;
-  background-size: cover;
-  cursor: pointer;
-  position: absolute;
-  transition: trasnform 0.1s linear;
-</style>
-
 <body class="single-player-body">
   <div class="game-stats">
-    <div>current_streak: {{current_streak}}</div>
-    <div>current_difficulty: {{current_difficulty}}</div>
-    <div>current_attempts: {{current_attempts}}</div>
+    <div>Current streak: {{current_streak}}</div>
+    <div>Current difficulty: {{current_difficulty}}</div>
+    <div>Current attempts: {{current_attempts}}</div>
   </div>
   <div class="centered-container">
     <div class="row justify-content-center">
@@ -38,84 +25,25 @@
           <div class="symbol-box">{{result_number}}</div>
         </div>
         <hr class="hr-single-player">
-        <form onsubmit="{{url_for('single_player')}}" method="post" class="form-inline">
+        <!-- Tiek izmantots AJAX request, lai nepārlādētu mājaslapu -->
+        <form onsubmit="return false;" method="post" class="form-inline">
           <input type="text" id="userInput" name="userInput" placeholder="Enter your answer" class="form-control">
-          <button class="submit-button" type="submit">{{submit}}</button>
+          <button class="submit-button" type="submit">Submit</button>
           <div class="correct-status">{{current_status}}</div>
         </form>
         <hr class="hr-single-player">
         <div class="single-player-sailboats">
-          <!-- Images of sailboats can be added here -->
-          <a class="btn submit-button" href={{url_for('home')}}>{{home}}</a>
+          <!-- Boat image added here -->
+          <img src="https://raw.githubusercontent.com/spagnuolocarmine/spagnuolocarmine/main/sail.gif" class="boat" style="position: absolute; left: 0px; bottom: 0px;">
+          <a class="btn submit-button" href="{{url_for('home')}}">Home</a>
         </div>
       </div>
     </div>
   </div>
+  
 
-  <script>
-    // Initialize variables for game state
-    let correctStreak = 0;
-    let incorrectStreak = 0;
-    let boatSpeed = 5; // Initial speed of the boat
-    let boat = document.querySelector('.boat'); // Select the boat element
-  
-    // Function to move the boat
-    function moveBoat() {
-      let currentPosition = parseInt(boat.style.left, 10) || 0;
-      currentPosition += boatSpeed;
-      boat.style.left = currentPosition + 'px';
-      // Check if the boat has reached the right side of the webpage
-      if (currentPosition >= window.innerWidth) {
-        boat.style.left = '0px'; // Reset boat position to the left side
-      }
-    }
-  
-    // Function to update game state based on current_status
-    function updateGameState(currentStatus) {
-      if (currentStatus === 'correct') {
-        correctStreak++;
-        incorrectStreak = 0;
-        boatSpeed++;
-      } else if (currentStatus === 'incorrect') {
-        incorrectStreak++;
-        correctStreak = 0;
-        boatSpeed = Math.max(boatSpeed - 1, 1);
-      }
-  
-      // Check for game over condition
-      if (incorrectStreak >= 3) {
-        // Hide the boat and reset the game
-        boat.style.display = 'none';
-        resetGame();
-      }
-  
-      // Check for win condition
-      if (correctStreak >= 10) {
-        // Move the boat to the finish line and reset
-        boat.style.left = '100%';
-        resetGame();
-      }
-    }
-  
-    // Function to reset the game
-    function resetGame() {
-      correctStreak = 0;
-      incorrectStreak = 0;
-      boatSpeed = 5;
-      boat.style.left = '0px';
-      boat.style.display = 'block';
-    }
-  
-    // Call moveBoat function periodically to animate the boat
-    setInterval(moveBoat, 100);
-  
-    // Add event listener to form submission to update game state
-    document.querySelector('form').addEventListener('submit', function(event) {
-      event.preventDefault(); // Prevent form from submitting
-      const currentStatus = document.querySelector('.correct-status').textContent;
-      updateGameState(currentStatus);
-    });
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+ 
+<script src="{{ url_for('static', filename='boat_game_logic.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

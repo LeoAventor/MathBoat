@@ -15,7 +15,7 @@ body {
   margin: 5px;
 
 }
-.daily-player-body,.practice-body,.single-player-body,.quests-level {
+.daily-player-body,.quests-level {
 
   background-color: #3CE1F7!important;  
 }
@@ -269,5 +269,25 @@ width: 150px;
   left: 0;
 }
 
+
+
+.single-player-body,.practice-body{
+  background: url('https://cdna.artstation.com/p/assets/images/images/064/814/440/original/luna-van-egdom-terrariaoceandone10800p.gif?1688809493') no-repeat center center;
+  background-size: cover; 
+  transition: trasnform 0.1s linear;
+}
+
 /* Boat Animation */
 
+  .small_boat {
+  width: 100px;
+  height: 100px;
+  background: url('https://raw.githubusercontent.com/spagnuolocarmine/spagnuolocarmine/main/sail.gif') no-repeat center center;
+  background-size: cover;
+  cursor: pointer;
+  position: absolute;
+  transition: trasnform 0.1s linear; 
+  
+  }
+  
+  
