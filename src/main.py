@@ -58,7 +58,7 @@ class APPLICATION_CONTROLLER:
         return render_template(self.get_html_file_path("under_maintenance"),
                                under_maintenance_txt=self.language_controller.language_data.under_maintenance_txt,
                                under_maintenance_info_txt=self.language_controller.language_data.under_maintenance_info_txt)
-        
+
 
     def home(self):
         if self.user_controller.is_authorized:
@@ -137,7 +137,7 @@ class APPLICATION_CONTROLLER:
                 self.game_controller.sync_game_data(self.user_controller.user_data)
 
         self.render_controller.update(self.game_controller.game_data)
-
+        self.language_controller.set_current_status(self.render_controller.render_data.current_status)
         return render_template(self.get_html_file_path("single_player"),
                                current_streak=self.render_controller.render_data.current_streak,
                                current_difficulty=self.render_controller.render_data.current_single_player_difficulty,
@@ -147,9 +147,12 @@ class APPLICATION_CONTROLLER:
                                second_number=self.render_controller.render_data.second_number,
                                equality_symbol=self.render_controller.render_data.equality_symbol,
                                result_number=self.render_controller.render_data.result_number,
-                               current_status=self.render_controller.render_data.current_status,
+                               current_status=self.language_controller.language_data.current_status,
                                submit_txt=self.language_controller.language_data.submit_txt,
-                               home_txt=self.language_controller.language_data.home_txt)
+                               home_txt=self.language_controller.language_data.home_txt,
+                               current_streak_txt=self.language_controller.language_data.current_streak_txt,
+                               current_difficulty_txt=self.language_controller.language_data.current_difficulty_txt,
+                               current_attempts_txt=self.language_controller.language_data.current_attempts_txt)
 
     def practice(self):
         if request.method == 'POST':
@@ -172,9 +175,9 @@ class APPLICATION_CONTROLLER:
                                self.language_controller.language_data.incorrect_answer_count_txt,
                                previous_correct_answer_txt=
                                self.language_controller.language_data.previous_correct_answer_txt,
-                               submit=self.language_controller.language_data.submit,
+                               submit_txt=self.language_controller.language_data.submit_txt,
                                current_status=self.language_controller.language_data.current_status,
-                               home=self.language_controller.language_data.home)
+                               home_txt=self.language_controller.language_data.home_txt)
 
 
 if __name__ == "__main__":

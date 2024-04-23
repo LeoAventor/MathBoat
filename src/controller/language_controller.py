@@ -1,7 +1,7 @@
+import os
+
 from src.data.language_data import LANGUAGE_DATA
 from src.properties import PROPERTIES
-
-import os
 
 
 class LANGUAGE_CONTROLLER:
@@ -76,7 +76,6 @@ class LANGUAGE_CONTROLLER:
                     case 'under_maintenance_info_txt':
                         self.language_data.under_maintenance_info_txt = fields[1]
 
-
     def change_language(self, language):
         self.current_language = language
         self.set_language()
@@ -96,16 +95,13 @@ class LANGUAGE_CONTROLLER:
                     self.language_data.current_status = 'pareizi'
                 case "incorrect":
                     self.language_data.current_status = 'nepareizi'
-                case "welcome":
-                    self.language_data.current_status = 'laipni lūgti'
+                case "Welcome":
+                    self.language_data.current_status = 'Laipni lūgti'
                 case "winner":
                     self.language_data.current_status = 'uzvara'
-                
-                
-                # TODO other status messages
         else:
             self.language_data.current_status = current_status
-                
+
     def set_user_current_difficulty(self, user_current_difficulty):
         if self.current_language == 'lv':
             match user_current_difficulty:
@@ -133,7 +129,7 @@ class LANGUAGE_CONTROLLER:
                     self.language_data.motivation = "lielisks veikums!"
                 case "motivation4":
                     self.language_data.motivation = "izcili, tā turpināt!"
-                
+
         else:
             match previous_correct_answer:
                 case "none":
@@ -146,4 +142,3 @@ class LANGUAGE_CONTROLLER:
                     self.language_data.motivation = "you got it!"
                 case "motivation4":
                     self.language_data.motivation = "amazing, keep it up!"
-                
