@@ -60,8 +60,6 @@ class LANGUAGE_CONTROLLER:
                         self.language_data.previous_correct_answer_txt = field[1]
                     case 'submit':
                         self.language_data.submit = field[1]
-                    # case 'current_status':
-                    #     self.language_data.current_status = field[1]
                     case 'home':
                         self.language_data.home = field[1]
                     case 'select_quest':
@@ -84,7 +82,6 @@ class LANGUAGE_CONTROLLER:
         self.set_language()
 
     def set_current_status(self, current_status):
-        print(self.current_language)
         if self.current_language == 'lv':
             match current_status:
                 case "correct":
@@ -92,16 +89,18 @@ class LANGUAGE_CONTROLLER:
         else:
             self.language_data.current_status = current_status
                 
-    def user_current_difficulty(self, user_current_difficulty):
-            if self.current_language == 'lv':
-                match self.language_data.user_current_difficulty:
-                    case "easy":
-                        self.language_data.user_current_difficulty = 'viegls'
-                    case "medium":
-                        self.language_data.user_current_difficulty = 'vidējs'
-                    case "hard":
-                        self.language_data.user_current_difficulty = 'grūts'
-                    case "insane":
-                        self.language_data.user_current_difficulty = 'ļoti_grūts'
+    def set_user_current_difficulty(self, user_current_difficulty):
+        if self.current_language == 'lv':
+            match user_current_difficulty:
+                case "easy":
+                    self.language_data.user_current_difficulty = 'viegls'
+                case "medium":
+                    self.language_data.user_current_difficulty = 'vidējs'
+                case "hard":
+                    self.language_data.user_current_difficulty = 'grūts'
+                case "insane":
+                    self.language_data.user_current_difficulty = 'ļoti_grūts'
+        else:
+            self.language_data.user_current_difficulty = user_current_difficulty
 
            

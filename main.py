@@ -89,10 +89,11 @@ class APPLICATION_CONTROLLER:
     def profile(self):
         self.render_controller.update(self.user_controller.user_data)
         self.language_controller.set_current_status(self.render_controller.render_data.current_status)
+        self.language_controller.set_user_current_difficulty(self.render_controller.render_data.user_current_difficulty)
         return render_template('profile.html',
                                user_win_count=self.render_controller.render_data.user_win_count,
                                user_lose_count=self.render_controller.render_data.user_lose_count,
-                               user_current_difficulty=self.render_controller.render_data.user_current_difficulty,
+                               # user_current_difficulty=self.render_controller.render_data.set_user_current_difficulty,
                                user_current_streak=self.render_controller.render_data.user_current_streak,
                                user_current_attempts=self.render_controller.render_data.user_current_attempts,
                                records=self.language_controller.language_data.records,
@@ -102,9 +103,8 @@ class APPLICATION_CONTROLLER:
                                current_difficulty_txt=self.language_controller.language_data.current_difficulty_txt,
                                current_streak_txt=self.language_controller.language_data.current_streak_txt,
                                current_attempts_txt=self.language_controller.language_data.current_attempts_txt,
-                               user_current_difficulty=self.language_controller.language_data.user_current_difficulty,
-                               user_current_streak=self.language_controller.language_data.user_current_streak,
-                               user_current_attempts=self.language_controller.language_data.user_current_attempts,)
+                               user_current_difficulty=
+                               self.language_controller.language_data.set_user_current_difficulty)
 
     # @app.route("/multiplayer")
     # def multiplayer(self):

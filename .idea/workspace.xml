@@ -10,10 +10,7 @@
     <list default="true" id="0a734bd8-0c67-4786-aa64-1aeb6083749a" name="Changes" comment="Changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/language_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/language_controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/languages/en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/languages/en.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/practice_boat_game_logic.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/practice_boat_game_logic.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/practice.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/practice.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -236,7 +233,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713730591492</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Changes">
+      <option name="closed" value="true" />
+      <created>1713802843574</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1713802843574</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
