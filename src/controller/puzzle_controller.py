@@ -1,5 +1,5 @@
 from random import randint
-from puzzle_data import PUZZLE_DATA
+from src.data.puzzle_data import PUZZLE_DATA
 
 
 class PUZZLE_CONTROLLER:

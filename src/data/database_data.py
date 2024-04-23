@@ -1,4 +1,4 @@
-from properties import PROPERTIES
+from src.properties import PROPERTIES
 import pymongo
 
 

@@ -4,7 +4,7 @@ __pycache__/render_controller.cpython-312.pyc
 __pycache__/user_controller.cpython-312.pyc
 __pycache__/user_data.cpython-312.pyc
 __pycache__/render_data.cpython-312.pyc
-config.properties
+resource/config.properties
 __pycache__/user_encoder.cpython-312.pyc
 __pycache__/database_controller.cpython-312.pyc
 __pycache__/database_data.cpython-312.pyc

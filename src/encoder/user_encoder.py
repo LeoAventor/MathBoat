@@ -1,4 +1,4 @@
-from user_data import USER_DATA
+from src.data.user_data import USER_DATA
 import json
 
 

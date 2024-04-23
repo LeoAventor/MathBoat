@@ -1,6 +1,6 @@
 import random
 
-from properties import PROPERTIES
+from src.properties import PROPERTIES
 
 
 class GAME_DATA:
@@ -103,5 +103,4 @@ class GAME_DATA:
         self.incorrect_answer_count = str(int(self.incorrect_answer_count) + 1)
 
     def get_motivation_previous_correct_answer(self):
-        motivations = ["Good Job!", "Nice work.", "You got it!"]
-        self.previous_correct_answer = motivations[random.randint(0, len(motivations)-1)]
+        self.previous_correct_answer = "motivation" + str(random.randint(0, 3))

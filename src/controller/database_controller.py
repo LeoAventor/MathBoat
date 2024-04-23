@@ -1,5 +1,5 @@
-from database_data import DATABASE_DATA
-from user_data import USER_DATA
+from src.data.database_data import DATABASE_DATA
+from src.data.user_data import USER_DATA
 
 
 class DATABASE_CONTROLLER:
