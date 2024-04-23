@@ -6,7 +6,7 @@
 
     <title>{{single_player_txt}}</title>
 
-    <link href="{{url_for('static', filename='style.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='css/style.css')}}" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
@@ -29,7 +29,7 @@
             </div>
 
             <hr class="hr-single-player">
-            <form class="form-inline" method="post" onsubmit="{{url_for('single-player')}}">
+            <form class="form-inline" method="post" onsubmit="{{url_for('single_player')}}">
                 <input class="form-control" id="userInput" name="userInput" placeholder="Enter your answer" type="text">
                 <button class="submit-button" type="submit">{{submit_txt}}</button>
                 <div class="correct-status">{{current_status}}</div>

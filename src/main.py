@@ -120,15 +120,15 @@ class APPLICATION_CONTROLLER:
                                user_current_attempts=self.render_controller.render_data.user_current_attempts,
                                user_current_difficulty=
                                self.language_controller.language_data.user_current_difficulty,
-                               records=self.language_controller.language_data.records,
+                               records_txt=self.language_controller.language_data.records_txt,
                                win_count_txt=self.language_controller.language_data.win_count_txt,
                                lose_count_txt=self.language_controller.language_data.lose_count_txt,
-                               current_state=self.language_controller.language_data.current_state,
+                               current_state_txt=self.language_controller.language_data.current_state_txt,
                                current_difficulty_txt=self.language_controller.language_data.current_difficulty_txt,
                                current_streak_txt=self.language_controller.language_data.current_streak_txt,
                                current_attempts_txt=self.language_controller.language_data.current_attempts_txt,
-                               profile=self.language_controller.language_data.profile,
-                               home=self.language_controller.language_data.home)
+                               profile_txt=self.language_controller.language_data.profile_txt,
+                               home_txt=self.language_controller.language_data.home_txt)
 
     def single_player(self):
         if request.method == 'POST':
@@ -147,7 +147,9 @@ class APPLICATION_CONTROLLER:
                                second_number=self.render_controller.render_data.second_number,
                                equality_symbol=self.render_controller.render_data.equality_symbol,
                                result_number=self.render_controller.render_data.result_number,
-                               current_status=self.render_controller.render_data.current_status)
+                               current_status=self.render_controller.render_data.current_status,
+                               submit_txt=self.language_controller.language_data.submit_txt,
+                               home_txt=self.language_controller.language_data.home_txt)
 
     def practice(self):
         if request.method == 'POST':
