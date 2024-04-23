@@ -1,10 +1,10 @@
 import random
 
-from puzzle_controller import PUZZLE_CONTROLLER
-from database_controller import DATABASE_CONTROLLER
-from game_data import GAME_DATA
-from user_data import USER_DATA
-from properties import PROPERTIES
+from src.controller.puzzle_controller import PUZZLE_CONTROLLER
+from src.controller.database_controller import DATABASE_CONTROLLER
+from src.data.game_data import GAME_DATA
+from src.data.user_data import USER_DATA
+from src.properties import PROPERTIES
 
 
 class GAME_CONTROLLER:
@@ -39,7 +39,7 @@ class GAME_CONTROLLER:
                     self.game_data.current_streak = str(0)
 
                 if self.game_data.current_streak == self.properties.streak_to_win_game:
-                    self.game_data.current_status = "Winner"
+                    self.game_data.current_status = "winner"
                     self.game_data.inc_win_count()
                     self.reset_game()
             else:
@@ -48,7 +48,7 @@ class GAME_CONTROLLER:
                 self.game_data.dec_current_count()
 
                 if self.game_data.current_attempts == str(0):
-                    self.game_data.current_status = "Game Over"
+                    self.game_data.current_status = "game over"
                     self.game_data.inc_lose_count()
                     self.reset_game()
 
@@ -62,12 +62,10 @@ class GAME_CONTROLLER:
                 self.game_data.current_status = "correct"
                 self.game_data.inc_correct_answer_count()
                 self.game_data.get_motivation_previous_correct_answer()
-                # TODO Save to profile data
             else:
                 self.game_data.current_status = "incorrect"
                 self.game_data.inc_incorrect_answer_count()
                 self.game_data.previous_correct_answer = self.game_data.p_correct_answer
-                # TODO Save to profile data
         self.sync_difficulty_for_practice()
         self.get_new_puzzle_for_practice()
 
@@ -80,8 +78,6 @@ class GAME_CONTROLLER:
         self.puzzle_controller.puzzle_data.update_max_value()
 
     def reset_game(self):
-        # self.game_data.current_single_player_difficulty = "easy"
-        # self.game_data.current_attempts = str(3)
         self.game_data.current_streak = str(0)
         self.game_data.set_initial_values()
         self.sync_difficulty_for_single_player()
@@ -102,5 +98,4 @@ class GAME_CONTROLLER:
             user.user_current_difficulty = self.game_data.current_single_player_difficulty
             user.user_win_count = self.game_data.current_win_count
             user.user_lose_count = self.game_data.current_lose_count
-            # self.database_controller.save_to_file(user)
             self.database_controller.update_user_data_to_database(user)

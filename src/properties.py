@@ -1,3 +1,6 @@
+import os
+
+
 class PROPERTIES:
     connection_string_to_database = str()
     sign_up_confirmation_status = str()
@@ -14,7 +17,7 @@ class PROPERTIES:
     initial_language = str()
 
     def __init__(self):
-        with open('config.properties', 'r') as file:
+        with open(os.path.dirname(__file__) + '\\..\\resource\\config.properties', 'r') as file:
             lines = file.readlines()
             for line in lines:
                 tmp_data = line.split('=', 1)

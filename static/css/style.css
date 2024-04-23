@@ -219,75 +219,65 @@ body {
 }
 
 .lower-left {
-  position: absolute;
-  bottom: 0;
-  left: 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
 }
 
 .container-quests {
-  display: flex; /* Use flexbox to align children */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  height: 100vh; /* Full height of the viewport */
-  flex-wrap: wrap;
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-wrap: wrap;
 }
 
 .row-quests {
-  display: flex; /* Use flexbox to align children */
-  flex-wrap: wrap; /* Allow wrapping of items */
-  justify-content: center; /* Center horizontally */
-  gap: 1rem; /* Space between buttons */
-  width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
 }
 
 .quests-level .bg-white {
-  margin-top: 20px; /* Adjusts the distance from the top */
-  width: 50%; /* Adjusts the width to match the image */
-  margin-left: auto; /* Centers the box horizontally */
-  margin-right: auto; /* Centers the box horizontally */
+    margin-top: 20px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .btn-light {
-  border-color: #000000!important;
+    border-color: #000000!important;
 }
 
-
-/* Quests task */
-
 .btn-home, .btn-next {
-width: 150px;
+    width: 150px;
 }
 
 .home-button-box {
-  position: relative;
+    position: relative;
 }
 
 .dropdown {
-  position: absolute;
-  top: 100%; /* Adjust this value as needed */
-  left: 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
 }
-
-
 
 .single-player-body,.practice-body{
-  background: url('https://cdna.artstation.com/p/assets/images/images/064/814/440/original/luna-van-egdom-terrariaoceandone10800p.gif?1688809493') no-repeat center center;
-  background-size: cover; 
-  transition: trasnform 0.1s linear;
+    background: url('https://cdna.artstation.com/p/assets/images/images/064/814/440/original/luna-van-egdom-terrariaoceandone10800p.gif?1688809493') no-repeat center center;
+    background-size: cover;
+    transition: trasnform 0.1s linear;
 }
 
-/* Boat Animation */
-
-  .small_boat {
-  width: 100px;
-  height: 100px;
-  background: url('https://raw.githubusercontent.com/spagnuolocarmine/spagnuolocarmine/main/sail.gif') no-repeat center center;
-  background-size: cover;
-  cursor: pointer;
-  position: absolute;
-  transition: trasnform 0.1s linear; 
-  
-  }
-  
+.small_boat {
+    width: 100px;
+    height: 100px;
+    background: url('https://raw.githubusercontent.com/spagnuolocarmine/spagnuolocarmine/main/sail.gif') no-repeat center center;
+    background-size: cover;
+    cursor: pointer;
+    position: absolute;
+    transition: trasnform 0.1s linear;
+}
   
