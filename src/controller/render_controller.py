@@ -1,6 +1,6 @@
-from render_data import RENDER_DATA
-from game_data import GAME_DATA
-from user_data import USER_DATA
+from src.data.render_data import RENDER_DATA
+from src.data.game_data import GAME_DATA
+from src.data.user_data import USER_DATA
 
 
 class RENDER_CONTROLLER:

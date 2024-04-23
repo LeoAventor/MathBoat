@@ -1,5 +1,5 @@
 from random import randint
-from properties import PROPERTIES
+from src.properties import PROPERTIES
 
 
 class PUZZLE_DATA:
