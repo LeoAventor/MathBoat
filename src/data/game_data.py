@@ -103,4 +103,4 @@ class GAME_DATA:
         self.incorrect_answer_count = str(int(self.incorrect_answer_count) + 1)
 
     def get_motivation_previous_correct_answer(self):
-        self.previous_correct_answer = "motivation" + str(random.randint(0, 4))
+        self.previous_correct_answer = "motivation" + str(random.randint(1, 4))

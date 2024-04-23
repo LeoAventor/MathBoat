@@ -119,30 +119,29 @@ class LANGUAGE_CONTROLLER:
     def set_previous_correct_answer(self, previous_correct_answer):
         if self.current_language == 'lv':
             match previous_correct_answer:
-                case "none":
+                case "None":
                     self.language_data.previous_correct_answer = "nav"
                 case "motivation1":
-                    self.language_data.motivation = "labs darbs!"
+                    self.language_data.previous_correct_answer = "labs darbs!"
                 case "motivation2":
-                    self.language_data.motivation = "lielisks veikums!"
+                    self.language_data.previous_correct_answer = "lielisks veikums!"
                 case "motivation3":
-                    self.language_data.motivation = "lielisks veikums!"
+                    self.language_data.previous_correct_answer = "lielisks veikums!"
                 case "motivation4":
-                    self.language_data.motivation = "izcili, tā turpināt!"
+                    self.language_data.previous_correct_answer = "izcili, tā turpināt!"
                 case _:
-                    self.language_data.motivation = previous_correct_answer
-
+                    self.language_data.previous_correct_answer = previous_correct_answer
         else:
             match previous_correct_answer:
-                case "none":
+                case "None":
                     self.language_data.previous_correct_answer = "none"
                 case "motivation1":
-                    self.language_data.motivation = "good job!"
+                    self.language_data.previous_correct_answer = "good job!"
                 case "motivation2":
-                    self.language_data.motivation = "nice work!"
+                    self.language_data.previous_correct_answer = "nice work!"
                 case "motivation3":
-                    self.language_data.motivation = "you got it!"
+                    self.language_data.previous_correct_answer = "you got it!"
                 case "motivation4":
-                    self.language_data.motivation = "amazing, keep it up!"
+                    self.language_data.previous_correct_answer = "amazing, keep it up!"
                 case _:
-                    self.language_data.motivation = previous_correct_answer
+                    self.language_data.previous_correct_answer = previous_correct_answer
