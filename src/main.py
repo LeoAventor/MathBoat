@@ -161,10 +161,11 @@ class APPLICATION_CONTROLLER:
 
         self.render_controller.update(self.game_controller.game_data, "practice")
         self.language_controller.set_current_status(self.render_controller.render_data.current_status)
+        self.language_controller.set_previous_correct_answer(self.render_controller.render_data.previous_correct_answer)
         return render_template(self.get_html_file_path("practice"),
                                correct_answer_count=self.render_controller.render_data.correct_answer_count,
                                incorrect_answer_count=self.render_controller.render_data.incorrect_answer_count,
-                               previous_correct_answer=self.render_controller.render_data.previous_correct_answer,
+                               previous_correct_answer=self.language_controller.language_data.previous_correct_answer,
                                first_number=self.render_controller.render_data.first_number,
                                operation_symbol=self.render_controller.render_data.operation_symbol,
                                second_number=self.render_controller.render_data.second_number,

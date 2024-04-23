@@ -129,6 +129,8 @@ class LANGUAGE_CONTROLLER:
                     self.language_data.motivation = "lielisks veikums!"
                 case "motivation4":
                     self.language_data.motivation = "izcili, tā turpināt!"
+                case _:
+                    self.language_data.motivation = previous_correct_answer
 
         else:
             match previous_correct_answer:
@@ -142,3 +144,5 @@ class LANGUAGE_CONTROLLER:
                     self.language_data.motivation = "you got it!"
                 case "motivation4":
                     self.language_data.motivation = "amazing, keep it up!"
+                case _:
+                    self.language_data.motivation = previous_correct_answer
