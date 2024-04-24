@@ -17,6 +17,12 @@ function moveBoat() {
   } else if (currentDifficulty === "medium") {
     boat.style.width = '200px';
     boat.style.height = '200px';
+  } else if (currentDifficulty === "hard") {
+    boat.style.width = '300px';
+    boat.style.height = '300px';
+  } else if (currentDifficulty === "insane") {
+    boat.style.width = '400px';
+    boat.style.height = '400px';
   }
 }
 

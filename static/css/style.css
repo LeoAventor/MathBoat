@@ -36,9 +36,9 @@ body {
 
 .home-boat-image {
   position: absolute;
-  top: -60px; /* Adjust this value to position the boat vertically */
-  left: 50%; /* Center the boat horizontally */
-  transform: translateX(-50%); /* Center the boat horizontally */
+  top: -100px; /* Adjust this value to position the boat vertically */
+  left: 25%; /* Center the boat horizontally */
+  transform: translateX(-90%); /* Center the boat horizontally */
   width: 120px; /* Set the width of the boat */
   height: auto; /* Maintain the aspect ratio */
 }

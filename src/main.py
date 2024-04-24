@@ -50,15 +50,16 @@ class APPLICATION_CONTROLLER:
 
     def under_maintenance(self):
         if self.user_controller.is_authorized:
-                if request.method == 'POST':
-                    if request.form['language_button'] == 'lv':
-                        self.language_controller.set_lv()
-                    elif request.form['language_button'] == 'en':
-                        self.language_controller.set_en()
+            if request.method == 'POST':
+                if request.form['language_button'] == 'lv':
+                    self.language_controller.set_lv()
+                elif request.form['language_button'] == 'en':
+                    self.language_controller.set_en()
         return render_template(self.get_html_file_path("under_maintenance"),
                                under_maintenance_txt=self.language_controller.language_data.under_maintenance_txt,
-                               under_maintenance_info_txt=self.language_controller.language_data.under_maintenance_info_txt)
-
+                               under_maintenance_info_txt=self.language_controller.language_data.
+                               under_maintenance_info_txt,
+                               home_txt=self.language_controller.language_data.home_txt)
 
     def home(self):
         if self.user_controller.is_authorized:

@@ -18,11 +18,15 @@
 
     <p class="fs-3 text-dark">{{under_maintenance_info_txt}}</p>
 
-<!--    <div class="boat-icon">⛵</div>-->
-
-    <div class="position-absolute bottom-0 start-0 mb-3 ms-3">
-        <i class="bi bi-boat-fill fs-1"></i>
+    <div class="row fixed-bottom mb-3">
+        <div class="col-md-12 text-center">
+            <a class="btn btn-custom btn-lg w-50" style="background-color: orange;" href="{{url_for('home')}}">{{home_txt}}</a>
+        </div>
     </div>
+</div>
+
+<div class="position-absolute bottom-0 start-0 mb-3 ms-3">
+    <i class="bi bi-boat-fill fs-1"></i>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
